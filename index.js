@@ -39,6 +39,7 @@ app.post('/webhook', (req, res) => {
            const ms = 'INSERT INTO messages(content, sender_id) VALUES($1, $2) RETURNING *';
            const values = [text, sender];
            client.query(ms, values, (err, res) => {
+            console.log("I'm inside client scope!!");   
             if (err) {
               console.log(err.stack)
             } else {
