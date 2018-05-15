@@ -77,7 +77,7 @@ function sendText(sender, text) {
 }
 app.get('/messages', function(req, res) {
     client.connect();
-    let result = "";
+    const result = "";
     client.query('select * from messages', (err, res) => {
         console.log("Get data from db");   
         if (err) {
@@ -85,11 +85,11 @@ app.get('/messages', function(req, res) {
         } else {
           console.log(res.rows);
           result = res.rows;
-          res.send(result);
+          
         }
         client.end();
       })
-    
+      res.send(result);
 })
 app.listen(app.get('port'), function() {
     console.log('running on port')
