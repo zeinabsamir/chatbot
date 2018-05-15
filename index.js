@@ -76,19 +76,15 @@ function sendText(sender, text) {
 
 }
 app.get('/messages', async (req, res) => {
-    await client.connect();
   
-    const  res = await client.query('select * from messages', (err, res) => {
-        console.log("Get data from db");   
-        if (err) {
-          console.log(err.stack)
-        } else {
-          console.log(res.rows);
-        }
-        await client.end()
-      })
-      
-      res.send(res[0]); 
+    await client.connect()
+
+    const res = await client.query('select * from messages')
+    
+    console.log(res.rows);
+    res.send(res.rows); 
+    
+    await client.end() 
 })
 app.listen(app.get('port'), function() {
     console.log('running on port')
