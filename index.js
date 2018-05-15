@@ -77,20 +77,7 @@ function sendText(sender, text) {
   });
 
 }
-app.get('/messages', function(req, res) {
-    client.connect();
-    client.query('select * from messages', (err, res) => {
-        console.log("Get data from db");   
-        if (err) {
-          console.log(err.stack)
-        } else {
-          console.log(res.rows[0]);
-         // res.send(res.rows[0]);
-       
-        }
-        client.end();
-      })
-})
+
 app.listen(app.get('port'), function() {
     console.log('running on port')
 })
