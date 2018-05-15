@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
 const pgp = require('pg-promise');
-const db = pgp('postgres://fmbjfnvdcxkdff:e34438b2e94ac49b4f15e04ed761704ef24208886634a6576f0cb51710c59051@ec2-54-235-132-202.compute-1.amazonaws.com:5432/dfa0re5p7bio0f');
+const db = pgp(process.env.DATABASE_URL);
 
 
 const access = process.env.FB_ACCESS_TOKEN;
