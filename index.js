@@ -43,7 +43,7 @@ app.post('/webhook', (req, res) => {
            const values = [text, sender];
            client.connect();
            client.query(ms, values, (err, res) => {
-            console.log("I'm inside client scope!!");   
+            console.log("save data to db");   
             if (err) {
               console.log(err.stack)
             } else {
@@ -80,12 +80,12 @@ function sendText(sender, text) {
 app.get('/messages', function(req, res) {
     client.connect();
     client.query('select * from messages', (err, res) => {
-        console.log("I'm inside client scope!!");   
+        console.log("Get data from db");   
         if (err) {
           console.log(err.stack)
         } else {
           console.log(res.rows[0]);
-          res.send(JSON.stringify(res.rows[0]));
+          res.send(res.rows[0]);
        
         }
         client.end();
