@@ -78,7 +78,7 @@ function sendText(sender, text) {
 app.get('/messages', async (req, res) => {
   try{
       const conn = await client.connect();
-      const res = await  conn.query('select * from messages')
+      const res = await  conn.query('SELECT * FROM messages')
     } catch (err) {
         console.error(err);
         res.send("Error " + err);
