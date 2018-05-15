@@ -85,7 +85,7 @@ app.get('/messages', function(req, res) {
           console.log(err.stack)
         } else {
           console.log(res.rows[0]);
-          res.sendJSON.stringify(res.rows[0]);
+          res.send(JSON.stringify(res.rows[0]));
        
         }
         client.end();
