@@ -76,7 +76,7 @@ function sendText(sender, text) {
   });
 
 }
-app.get('/db', async (req, res) => {
+app.get('/messages', async (req, res) => {
     try {
       const client = await pool.connect()
       const result = await client.query('SELECT * FROM messages');
