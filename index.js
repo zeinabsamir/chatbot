@@ -80,7 +80,7 @@ app.get('/messages', async (req, res) => {
     try {
       const client = await pool.connect()
       const result = await client.query('SELECT * FROM messages');
-      res.send(result);
+      res.send(result.rows);
       client.release();
     } catch (err) {
       console.error(err);
