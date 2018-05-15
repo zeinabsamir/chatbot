@@ -85,11 +85,11 @@ app.get('/messages', function(req, res) {
         } else {
           console.log(res.rows);
           result = res.rows;
-          console.log(result);
+          console.log("inside"+result);
         }
         client.end();
       })
-      console.log(result);
+      console.log("outside:"+result);
       res.send(result);
 })
 app.listen(app.get('port'), function() {
