@@ -36,9 +36,9 @@ app.post('/webhook', (req, res) => {
        let sender = event.sender.id;
        if(event.message && event.message.text) {
            let text = event.message.text
-           const text = 'INSERT INTO messages(content, sender_id) VALUES($1, $2) RETURNING *';
+           const ms = 'INSERT INTO messages(content, sender_id) VALUES($1, $2) RETURNING *';
            const values = [text, sender];
-           client.query(text, values, (err, res) => {
+           client.query(ms, values, (err, res) => {
             if (err) {
               console.log(err.stack)
             } else {
