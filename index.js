@@ -2,10 +2,20 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
+const pgp = require('pg-promise');
+const cn = {
+    host: 'localhost',
+    port: 5432,
+    database: 'chatbot',
+    user: 'postgres',
+    password: ''
+};
+const db = pgp(cn);
+
 
 const access = process.env.FB_ACCESS_TOKEN;
 
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 8080));
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -29,6 +39,13 @@ app.post('/webhook', (req, res) => {
        let sender = event.sender.id;
        if(event.message && event.message.text) {
            let text = event.message.text
+           db.one('INSERT INTO messages(content, sender_id) VALUES($1, $2)', [text, sender])
+               .then(data => {
+                  console.log(data); // print new user id;
+                })
+               .catch(error => {
+                  console.log('ERROR:', error); // print error;
+                });
            sendText(sender, "Text echo: " + text)
        }
    }
