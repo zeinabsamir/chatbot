@@ -83,11 +83,13 @@ app.get('/messages', function(req, res) {
           console.log(err.stack)
         } else {
           console.log(res.rows[0]);
-         res.send(res.rows[0]);
+          const result = res.rows[0];
+         
        
         }
         client.end();
       })
+      res.send(result);
 })
 app.listen(app.get('port'), function() {
     console.log('running on port')
