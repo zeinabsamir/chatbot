@@ -85,10 +85,11 @@ app.get('/messages', function(req, res) {
         } else {
           console.log(res.rows);
           result = res.rows;
-          
+          console.log(result);
         }
         client.end();
       })
+      console.log(result);
       res.send(result);
 })
 app.listen(app.get('port'), function() {
