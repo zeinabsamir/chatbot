@@ -2,11 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
-const { Client } = require('pg');
-const client = new Client({
+const { Pool } = require('pg');
+const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: true
 });
+
 
 
 
@@ -75,17 +76,17 @@ function sendText(sender, text) {
   });
 
 }
-app.get('/messages', async (req, res) => {
-  try{
-      const conn = await client.connect();
-      const res = await conn.query('SELECT * FROM messages');
+app.get('/db', async (req, res) => {
+    try {
+      const client = await pool.connect()
+      const result = await client.query('SELECT * FROM messages');
       res.send(result);
-      conn.release();
+      client.release();
     } catch (err) {
-        console.error(err);
-        res.send("Error " + err);
-      }
-})
+      console.error(err);
+      res.send("Error " + err);
+    }
+  });
 app.listen(app.get('port'), function() {
     console.log('running on port')
 })
