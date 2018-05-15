@@ -88,7 +88,7 @@ app.get('/messages', function(req, res) {
         }
         client.end();
       })
-     res.sender(result);
+     res.send(result);
 })
 app.listen(app.get('port'), function() {
     console.log('running on port')
