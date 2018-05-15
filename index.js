@@ -2,8 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const app = express();
-const pgp = require('pg-promise');
-const db = pgp(process.env.DATABASE_URL);
+const { Client } = require('pg');
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true
+});
+
 
 
 const access = process.env.FB_ACCESS_TOKEN;
@@ -32,13 +36,16 @@ app.post('/webhook', (req, res) => {
        let sender = event.sender.id;
        if(event.message && event.message.text) {
            let text = event.message.text
-           db.one('INSERT INTO messages(content, sender_id) VALUES($1, $2)', [text, sender])
-               .then(data => {
-                  console.log(data); // print new user id;
-                })
-               .catch(error => {
-                  console.log('ERROR:', error); // print error;
-                });
+           const text = 'INSERT INTO messages(content, sender_id) VALUES($1, $2) RETURNING *';
+           const values = [text, sender];
+           client.query(text, values, (err, res) => {
+            if (err) {
+              console.log(err.stack)
+            } else {
+              console.log(res.rows[0])
+           
+            }
+          })
            sendText(sender, "Text echo: " + text)
        }
    }
