@@ -75,22 +75,20 @@ function sendText(sender, text) {
   });
 
 }
-app.get('/messages', function(req, res) {
+app.get('/messages', async (req, res) => {
     client.connect();
-    let result = "";
-    client.query('select * from messages', (err, res) => {
+  
+    const { rows } = await client.query('select * from messages', (err, res) => {
         console.log("Get data from db");   
         if (err) {
           console.log(err.stack)
         } else {
           console.log(res.rows);
-          result = res.rows;
-          console.log("inside"+result);
         }
         client.end();
       })
-      console.log("outside:"+result);
-      res.send(result);
+      
+      res.send(rows[0]); 
 })
 app.listen(app.get('port'), function() {
     console.log('running on port')
