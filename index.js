@@ -21,6 +21,7 @@ app.get('/', function(req, res) {
      res.send('hello this is a chatbot')
 })
 
+
 app.get('/webhook/', function(req, res) {
     if(req.query['hub.verify_token'] === 'zeinab123') {
         res.send(req.query['hub.challenge'])
@@ -47,6 +48,7 @@ app.post('/webhook', (req, res) => {
               console.log(res.rows[0])
            
             }
+            client.end();
           })
            sendText(sender, "Text echo: " + text)
        }
@@ -73,6 +75,19 @@ function sendText(sender, text) {
   });
 
 }
+app.get('/messages', function(req, res) {
+    client.connect();
+    client.query('select * from messages', (err, res) => {
+        console.log("I'm inside client scope!!");   
+        if (err) {
+          console.log(err.stack)
+        } else {
+          console.log(res.rows[0])
+       
+        }
+        client.end();
+      })
+})
 app.listen(app.get('port'), function() {
     console.log('running on port')
 })
