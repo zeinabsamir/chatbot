@@ -1,3 +1,5 @@
+import { json } from 'body-parser';
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
@@ -82,7 +84,8 @@ app.get('/messages', function(req, res) {
         if (err) {
           console.log(err.stack)
         } else {
-          console.log(res.rows[0])
+          console.log(res.rows[0]);
+          res.sendJSON.stringify(res.rows[0]);
        
         }
         client.end();
