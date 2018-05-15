@@ -77,7 +77,7 @@ function sendText(sender, text) {
 }
 app.get('/messages', function(req, res) {
     client.connect();
-    const result = "";
+    let result = "";
     client.query('select * from messages', (err, res) => {
         console.log("Get data from db");   
         if (err) {
