@@ -48,11 +48,13 @@ app.post('/webhook', async (req, res) => {
   } catch (err) {
     console.error(err);
   }
-          sendText(sender, "Text echo: " + text)
+         sendText(sender, "Text echo: " + text)
+         
       }
   }
   res.sendStatus(200);
 })
+
 
 function sendText(sender, text) {
   let messageData = {text: text}
@@ -62,7 +64,14 @@ function sendText(sender, text) {
     "method": "POST",
     "json": {  
         "recipient": {"id": sender},
-         "message": messageData
+         "message": { 
+          "attachment":{
+            "type":"image",
+            "payload":{ 
+              "url":"https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg",         "is_reusable": true
+    }
+  } 
+}
     }
   }, (err, res, body) => {
     if (!err) {
