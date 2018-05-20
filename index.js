@@ -32,6 +32,7 @@ app.get('/webhook/', function(req, res) {
       
 })
 app.post('/webhook', async (req, res) => {  
+ 
    let messaging_events = req.body.entry[0].messaging
    for(let i = 0; i < messaging_events.length; i++ ) {
        let event = messaging_events[i];
@@ -42,7 +43,7 @@ app.post('/webhook', async (req, res) => {
            const values = [text, sender];
            const client = pool.connect();
           // client.connect();
-           client.query(ms, values, (err, res) => {
+          await client.query(ms, values, (err, res) => {
             console.log("save data to db");   
             if (err) {
               console.log(err.stack)
@@ -50,8 +51,8 @@ app.post('/webhook', async (req, res) => {
               console.log(res.rows[0])
            
             }
-            client.end();
-          })
+            client.release();
+          }) 
            sendText(sender, "Text echo: " + text)
        }
    }
