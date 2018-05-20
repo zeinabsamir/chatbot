@@ -64,14 +64,20 @@ function sendText(sender, text) {
     "method": "POST",
     "json": {  
         "recipient": {"id": sender},
-         "message": { 
-          "attachment":{
-            "type":"image",
-            "payload":{ 
-              "url":"https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg",         "is_reusable": true
-    }
-  } 
-}
+         "message":{
+          "text": "Here is a quick reply!",
+          "quick_replies":[
+            {
+              "content_type":"text",
+              "title":"Search",
+              "payload":"<POSTBACK_PAYLOAD>",
+              "image_url":"http://example.com/img/red.png"
+            },
+            {
+              "content_type":"location"
+            }
+          ]
+        }
     }
   }, (err, res, body) => {
     if (!err) {
