@@ -31,7 +31,7 @@ app.get('/webhook/', function(req, res) {
     }
       
 })
-app.post('/webhook', (req, res) => {  
+app.post('/webhook', async (req, res) => {  
    let messaging_events = req.body.entry[0].messaging
    for(let i = 0; i < messaging_events.length; i++ ) {
        let event = messaging_events[i];
@@ -41,7 +41,7 @@ app.post('/webhook', (req, res) => {
            const ms = 'INSERT INTO messages(content, sender_id) VALUES($1, $2) RETURNING *';
            const values = [text, sender];
            const client = pool.connect();
-           client.connect();
+          // client.connect();
            client.query(ms, values, (err, res) => {
             console.log("save data to db");   
             if (err) {
