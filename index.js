@@ -11,7 +11,7 @@ const pool = new Pool({
 
 
 
-const access = process.env.FB_ACCESS_TOKEN;
+const access = EAAD6aXQZAl8MBAFYn9TBVFFto7Sxhkg2BIV5d1ioyiLWAvjsmLZCokZBqKKV7X4XVFg4QsAlrr2EsNVaaMjUP6hcA9KFsyYAUXwHgIcWWvEqS7WPUjUlVqd7iHBL7EtFbEKqXtJWkpSPfEoR9lbOfJ9iwjeLg4JRDLIlzs3RQZDZD;
 
 app.set('port', (process.env.PORT || 8080));
 
