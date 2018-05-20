@@ -70,7 +70,7 @@ function sendText(sender, text) {
             {
               "content_type":"text",
               "title":"Search",
-              "payload":"<POSTBACK_PAYLOAD>",
+              "payload":"https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg",
               "image_url":"http://example.com/img/red.png"
             },
             {
