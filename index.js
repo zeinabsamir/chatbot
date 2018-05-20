@@ -40,6 +40,7 @@ app.post('/webhook', (req, res) => {
            let text = event.message.text
            const ms = 'INSERT INTO messages(content, sender_id) VALUES($1, $2) RETURNING *';
            const values = [text, sender];
+           const client = pool.connect();
            client.connect();
            client.query(ms, values, (err, res) => {
             console.log("save data to db");   
