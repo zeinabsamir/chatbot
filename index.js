@@ -32,31 +32,26 @@ app.get('/webhook/', function(req, res) {
       
 })
 app.post('/webhook', async (req, res) => {  
- 
-   let messaging_events = req.body.entry[0].messaging
-   for(let i = 0; i < messaging_events.length; i++ ) {
-       let event = messaging_events[i];
-       let sender = event.sender.id;
-       if(event.message && event.message.text) {
-           let text = event.message.text
-           const ms = 'INSERT INTO messages(content, sender_id) VALUES($1, $2) RETURNING *';
-           const values = [text, sender];
-           const client = pool.connect();
-          // client.connect();
-          await client.query(ms, values, (err, res) => {
-            console.log("save data to db");   
-            if (err) {
-              console.log(err.stack)
-            } else {
-              console.log(res.rows[0])
-           
-            }
-            client.release();
-          }) 
-           sendText(sender, "Text echo: " + text)
-       }
-   }
-   res.sendStatus(200);
+  let messaging_events = req.body.entry[0].messaging
+  for(let i = 0; i < messaging_events.length; i++ ) {
+      let event = messaging_events[i];
+      let sender = event.sender.id;
+      if(event.message && event.message.text) {
+          let text = event.message.text
+          const ms = 'INSERT INTO messages(content, sender_id) VALUES($1, $2) RETURNING *';
+          const values = [text, sender];
+          try {
+    const client = await pool.connect()
+    const res = await client.query(ms, values);
+    console.log(res.rows[0])
+    client.release();
+  } catch (err) {
+    console.error(err);
+  }
+          sendText(sender, "Text echo: " + text)
+      }
+  }
+  res.sendStatus(200);
 })
 
 function sendText(sender, text) {
