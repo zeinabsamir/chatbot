@@ -81,7 +81,11 @@ function sendText(sender, text) {
                 "type":"web_url",
                 "url":"https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg",
                 "title":"View Website"
-              }             
+              },{
+                "type":"postback",
+                "title":"Start Chatting",
+                "payload":"DEVELOPER_DEFINED_PAYLOAD"
+              }              
             ]      
           }
         ]
