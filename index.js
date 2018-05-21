@@ -65,7 +65,7 @@ function sendText(sender, text) {
     "method": "POST",
     "json": {  
         "recipient": {"id": sender},
-        "sender_action":"typing_on",
+        "sender_action":"mark_seen",
         
     }
   }, (err, res, body) => {
