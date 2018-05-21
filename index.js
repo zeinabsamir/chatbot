@@ -65,6 +65,7 @@ function sendText(sender, text) {
     "method": "POST",
     "json": {  
         "recipient": {"id": sender},
+        "sender_action":"typing_on",
          "message":{
           "text": "Here is a quick reply!",
           "quick_replies":[
