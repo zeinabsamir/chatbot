@@ -66,40 +66,71 @@ function sendText(sender, text) {
     "method": "POST",
     "json": {  
         "recipient": {"id": sender},
-         "message": {
-          "attachment":{
-            "type":"template",
-            "payload":{
-              "template_type":"generic",
-              "elements":[
-           {
-            "title":"Welcome!",
-            "image_url":"https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg",
-            "subtitle":"We have the right hat for everyone.",
-            "default_action": {
-              "type": "web_url",
-              "url": "https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg",
-              "messenger_extensions": false,
-              "webview_height_ratio": "tall",
-              "fallback_url": "https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg"
-            },
-            "buttons":[
-              {
-                "type":"web_url",
-                "url":"https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg",
-                "title":"View Website"
-              },{
-                "type":"postback",
-                "title":"Start Chatting",
-                "payload":"DEVELOPER_DEFINED_PAYLOAD"
-              }              
-            ]      
-          }
-        ]
+         "message": "message": {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "list",
+              "top_element_style": "compact",
+              "elements": [
+                {
+                  "title": "Classic T-Shirt Collection",
+                  "subtitle": "See all our colors",
+                  "image_url": "https://peterssendreceiveapp.ngrok.io/img/collection.png",          
+                  "buttons": [
+                    {
+                      "title": "View",
+                      "type": "web_url",
+                      "url": "https://peterssendreceiveapp.ngrok.io/collection",
+                      "messenger_extensions": true,
+                      "webview_height_ratio": "tall",
+                      "fallback_url": "https://peterssendreceiveapp.ngrok.io/"            
+                    }
+                  ]
+                },
+                {
+                  "title": "Classic White T-Shirt",
+                  "subtitle": "See all our colors",
+                  "default_action": {
+                    "type": "web_url",
+                    "url": "https://peterssendreceiveapp.ngrok.io/view?item=100",
+                    "messenger_extensions": false,
+                    "webview_height_ratio": "tall"
+                  }
+                },
+                {
+                  "title": "Classic Blue T-Shirt",
+                  "image_url": "https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
+                  "subtitle": "100% Cotton, 200% Comfortable",
+                  "default_action": {
+                    "type": "web_url",
+                    "url": "https://peterssendreceiveapp.ngrok.io/view?item=101",
+                    "messenger_extensions": true,
+                    "webview_height_ratio": "tall",
+                    "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                  },
+                  "buttons": [
+                    {
+                      "title": "Shop Now",
+                      "type": "web_url",
+                      "url": "https://peterssendreceiveapp.ngrok.io/shop?item=101",
+                      "messenger_extensions": true,
+                      "webview_height_ratio": "tall",
+                      "fallback_url": "https://peterssendreceiveapp.ngrok.io/"            
+                    }
+                  ]        
+                }
+              ],
+               "buttons": [
+                {
+                  "title": "View More",
+                  "type": "postback",
+                  "payload": "payload"            
+                }
+              ]  
             }
           }
-        }  
-      }
+            
   }, (err, res, body) => {
     if (!err) {
       console.log('message sent!')
