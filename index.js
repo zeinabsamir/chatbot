@@ -75,7 +75,7 @@ function sendText(sender, text) {
               "image_url":"https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg"
             },
             {
-              "content_type":"location"
+              "content_type":"user_phone_number"
             }
           ]
         }
