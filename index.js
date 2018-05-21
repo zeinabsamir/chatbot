@@ -67,55 +67,20 @@ function sendText(sender, text) {
     "json": {  
         "recipient": {"id": sender},
          "message": {
-          "attachment": {
-            "type": "template",
-            "payload": {
-              "template_type": "list",
-              "top_element_style": "compact",
-              "elements": [
+          "attachment":{
+            "type":"template",
+            "payload":{
+              "template_type":"button",
+              "text":"What do you want to do next?",
+              "buttons":[
                 {
-                  "title": "Classic T-Shirt Collection",
-                  "subtitle": "See all our colors",
-                  "image_url": "https://peterssendreceiveapp.ngrok.io/img/collection.png",          
-                  "buttons": [
-                    {
-                      "title": "View",
-                      "type": "web_url",
-                      "url": "https://peterssendreceiveapp.ngrok.io/collection",
-                      "messenger_extensions": true,
-                      "webview_height_ratio": "tall",
-                      "fallback_url": "https://peterssendreceiveapp.ngrok.io/"            
-                    }
-                  ]
-                },
-                {
-                  "title": "Classic White T-Shirt",
-                  "subtitle": "See all our colors",
-                },
-                {
-                  "title": "Classic Blue T-Shirt",
-                  "image_url": "https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
-                  "subtitle": "100% Cotton, 200% Comfortable",
-                  "buttons": [
-                    {
-                      "title": "Shop Now",
-                      "type": "web_url",
-                      "url": "https://peterssendreceiveapp.ngrok.io/shop?item=101",
-                      "messenger_extensions": true,
-                      "webview_height_ratio": "tall",
-                      "fallback_url": "https://peterssendreceiveapp.ngrok.io/"            
-                    }
-                  ]        
+                  "type":"web_url",
+                  "url":"https://www.messenger.com",
+                  "title":"Visit Messenger"
                 }
-              ],
-               "buttons": [
-                {
-                  "title": "View More",
-                  "type": "postback",
-                  "payload": "payload"            
-                }
-              ]  
+              ]
             }
+             
           }
         }
       }    
