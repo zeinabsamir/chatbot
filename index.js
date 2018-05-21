@@ -65,8 +65,9 @@ function sendText(sender, text) {
     "method": "POST",
     "json": {  
         "recipient": {"id": sender},
-        "sender_action":"mark_seen",
-        
+         "message": messageData,
+         "messaging_type": "MESSAGE_TAG",
+         "tag": "SHIPPING_UPDATE"
     }
   }, (err, res, body) => {
     if (!err) {
