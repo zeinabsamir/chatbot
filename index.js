@@ -130,6 +130,8 @@ function sendText(sender, text) {
               ]  
             }
           }
+        }
+      }    
             
   }, (err, res, body) => {
     if (!err) {
