@@ -70,34 +70,51 @@ function sendText(sender, text) {
           "attachment": {
             "type": "template",
             "payload": {
-              sharable: true,
-              aspectRatio: 'horizontal',
-              elements: [
+              "template_type": "list",
+              "top_element_style": "compact",
+              "elements": [
                 {
-                  title: 'my title',
-                  subtitle: 'I am a sub title',
-                  imageUrl: 'http://image.server.com/cover.png',
-                  buttons: [
+                  "title": "Classic T-Shirt Collection",
+                  "subtitle": "See all our colors",
+                  "image_url": "https://peterssendreceiveapp.ngrok.io/img/collection.png",          
+                  "buttons": [
                     {
-                      type: 'url',
-                      url: 'http://javascript-jedi.com',
-                      label: 'Javascript Jedi'
+                      "title": "View",
+                      "type": "web_url",
+                      "url": "https://peterssendreceiveapp.ngrok.io/collection",
+                      "messenger_extensions": true,
+                      "webview_height_ratio": "tall",
+                      "fallback_url": "https://peterssendreceiveapp.ngrok.io/"            
                     }
                   ]
                 },
                 {
-                  title: 'another title',
-                  subtitle: 'Second sub title',
-                  imageUrl: 'http://image.server.com/cover2.png',
-                  buttons: [
+                  "title": "Classic White T-Shirt",
+                  "subtitle": "See all our colors",
+                },
+                {
+                  "title": "Classic Blue T-Shirt",
+                  "image_url": "https://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
+                  "subtitle": "100% Cotton, 200% Comfortable",
+                  "buttons": [
                     {
-                      type: 'url',
-                      url: 'http://javascript-jedi.com',
-                      label: 'Javascript Jedi'
+                      "title": "Shop Now",
+                      "type": "web_url",
+                      "url": "https://peterssendreceiveapp.ngrok.io/shop?item=101",
+                      "messenger_extensions": true,
+                      "webview_height_ratio": "tall",
+                      "fallback_url": "https://peterssendreceiveapp.ngrok.io/"            
                     }
-                  ]
+                  ]        
                 }
-              ]      
+              ],
+               "buttons": [
+                {
+                  "title": "View More",
+                  "type": "postback",
+                  "payload": "payload"            
+                }
+              ]  
             }
           }
         }
