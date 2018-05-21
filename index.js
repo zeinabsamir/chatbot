@@ -66,7 +66,7 @@ function sendText(sender, text) {
     "method": "POST",
     "json": {  
         "recipient": {"id": sender},
-         "message": "message": {
+         "message": {
           "attachment": {
             "type": "template",
             "payload": {
