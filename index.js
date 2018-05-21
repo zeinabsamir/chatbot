@@ -66,20 +66,7 @@ function sendText(sender, text) {
     "json": {  
         "recipient": {"id": sender},
         "sender_action":"typing_on",
-         "message":{
-          "text": "Here is a quick reply!",
-          "quick_replies":[
-            {
-              "content_type":"text",
-              "title":"Search",
-              "payload":"okay",
-              "image_url":"https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg"
-            },
-            {
-              "content_type":"user_phone_number"
-            }
-          ]
-        }
+        
     }
   }, (err, res, body) => {
     if (!err) {
