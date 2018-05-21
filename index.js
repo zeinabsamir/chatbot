@@ -76,6 +76,13 @@ function sendText(sender, text) {
             "title":"Welcome!",
             "image_url":"https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg",
             "subtitle":"We have the right hat for everyone.",
+            "default_action": {
+              "type": "web_url",
+              "url": "https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg",
+              "messenger_extensions": false,
+              "webview_height_ratio": "tall",
+              "fallback_url": "https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg"
+            },
             "buttons":[
               {
                 "type":"web_url",
