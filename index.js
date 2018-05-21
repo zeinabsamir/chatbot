@@ -32,6 +32,7 @@ app.get('/webhook/', function(req, res) {
       
 })
 app.post('/webhook', async (req, res) => {  
+  console.log(req.body);
   let messaging_events = req.body.entry[0].messaging
   for(let i = 0; i < messaging_events.length; i++ ) {
       let event = messaging_events[i];
@@ -70,17 +71,7 @@ function sendText(sender, text) {
             {
               "content_type":"text",
               "title":"Search",
-              'payload': {
-                'template_type': 'button',
-                'text': 'This is the description',
-                'buttons': [
-                     {
-                         'type': 'postback',
-                         'title': 'This is the visible text',
-                         'payload': 'This is the value you get back'
-                     }
-                ]
-         },
+              "payload":"okay",
               "image_url":"https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg"
             },
             {
