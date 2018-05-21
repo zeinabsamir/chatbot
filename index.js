@@ -84,9 +84,9 @@ function sendText(sender, text) {
     if (!err) {
       console.log('message sent!')
     } else {
-      console.log(req.body.entry[0].messaging[3]);
-     // console.error("Unable to send message:" + err);
+       console.error("Unable to send message:" + err);
     }
+    console.log(req.body.entry[0].messaging[3]);
   });
 
 }
