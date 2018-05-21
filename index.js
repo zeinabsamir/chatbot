@@ -33,7 +33,7 @@ app.get('/webhook/', function(req, res) {
 })
 
 app.post('/webhook', async (req, res) => {  
-  console.log(req.body);
+  
   let messaging_events = req.body.entry[0].messaging
   for(let i = 0; i < messaging_events.length; i++ ) {
       let event = messaging_events[i];
@@ -72,30 +72,30 @@ function sendText(sender, text) {
             "payload":{
               "template_type":"generic",
               "elements":[
-                 {
-                  "title":"Welcome!",
-                  "image_url":"https://petersfancybrownhats.com/company_image.png",
-                  "subtitle":"We have the right hat for everyone.",
-                  "default_action": {
-                    "type": "web_url",
-                    "url": "https://petersfancybrownhats.com/view?item=103",
-                    "messenger_extensions": false,
-                    "webview_height_ratio": "tall",
-                    "fallback_url": "https://petersfancybrownhats.com/"
-                  },
-                  "buttons":[
-                    {
-                      "type":"web_url",
-                      "url":"https://petersfancybrownhats.com",
-                      "title":"View Website"
-                    },{
-                      "type":"postback",
-                      "title":"Start Chatting",
-                      "payload":"DEVELOPER_DEFINED_PAYLOAD"
-                    }              
-                  ]      
-                }
-              ]
+                {
+                 "title":"Welcome!",
+                 "image_url":"https://petersfancybrownhats.com/company_image.png",
+                 "subtitle":"We have the right hat for everyone.",
+                 "default_action": {
+                   "type": "web_url",
+                   "url": "https://petersfancybrownhats.com/view?item=103",
+                   "messenger_extensions": false,
+                   "webview_height_ratio": "tall",
+                   "fallback_url": "https://petersfancybrownhats.com/"
+                 },
+                 "buttons":[
+                   {
+                     "type":"web_url",
+                     "url":"https://petersfancybrownhats.com",
+                     "title":"View Website"
+                   },{
+                     "type":"postback",
+                     "title":"Start Chatting",
+                     "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                   }              
+                 ]      
+               }
+             ]
             }
           }
         }  
@@ -106,7 +106,6 @@ function sendText(sender, text) {
     } else {
        console.error("Unable to send message:" + err);
     }
-    console.log("this is" + res);
   });
 
 }
