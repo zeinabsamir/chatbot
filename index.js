@@ -70,18 +70,21 @@ function sendText(sender, text) {
           "attachment":{
             "type":"template",
             "payload":{
-              "template_type":"open_graph",
-              "elements":[
-                 {
-                  "url":"https://open.spotify.com/track/7GhIk7Il098yCjg4BQjzvb",
-                  "buttons":[
-                   {
-                  "type":"web_url",
-                  "url":"https://www.messenger.com",
-                  "title":"Visit Messenger"
-                  }
-              ]
-            }
+              "template_type":"media",
+              "elements": [
+                {
+                   "media_type": "image",
+                   "url": "https://www.facebook.com/431871363585527/photos/a.968276839944974.1073741973.431871363585527/1469261973179789/?type=3&theater",
+                   "buttons": [
+                      {
+                         "type": "web_url",
+                         "url": "https://www.facebook.com/431871363585527/photos/a.968276839944974.1073741973.431871363585527/1469261973179789/?type=3&theater",
+                         "title": "View Website",
+                      }
+                   ]
+                }
+             
+            
           ]
              
           }
