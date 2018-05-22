@@ -79,9 +79,9 @@ function sendText(sender, text) {
                   "pnr_number": "CG4X7U",
                   "seat": "74J",            
                   "logo_image_url": "https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg",
-                  "header_image_url": "https:\/\/www.example.com\/en\/fb\/header.png",
+                  "header_image_url": "https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg",
                   "qr_code": "M1SMITH\/NICOLAS  CG4X7U nawouehgawgnapwi3jfa0wfh",
-                  "above_bar_code_image_url": "https:\/\/www.example.com\/en\/PLAT.png",
+                  "above_bar_code_image_url":"https://images.scribblelive.com/2016/9/30/50a2da36-6d03-4294-8609-8d78188e537a.jpg",
                   "auxiliary_fields": [
                     {
                       "label": "Terminal",
