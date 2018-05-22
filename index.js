@@ -82,18 +82,8 @@ function sendText(sender, text) {
                     "messenger_extensions": false,
                     "webview_height_ratio": "tall",
                     "fallback_url": "https://petersfancybrownhats.com/"
-                  },
-                  "buttons":[
-                    {
-                      "type":"web_url",
-                      "url":"https://petersfancybrownhats.com",
-                      "title":"View Website"
-                    },{
-                      "type":"postback",
-                      "title":"Start Chatting",
-                      "payload":"DEVELOPER_DEFINED_PAYLOAD"
-                    }              
-                  ]      
+                  }
+                  
                 }
               ]
             }
