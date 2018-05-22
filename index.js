@@ -97,11 +97,6 @@ function sendButtonMessage(sender, text) {
           "type":"postback",
           "title":"Tea",
           "payload":"Tea"
-        },
-        {
-          "type":"postback",
-          "title":"Juice",
-          "payload":"Juice"
         }
       ]
     }
@@ -123,7 +118,7 @@ function sendImage(sender) {
   }
   sendRequest(sender, messageData)
 }
-function genericMassge() {
+function genericMassge(sender) {
   let messageData = {
     "attachment":{
       "type":"template",
