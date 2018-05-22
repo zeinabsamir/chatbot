@@ -127,7 +127,7 @@ function genericMassge(sender) {
         "elements":[
            {
             "title":"Tea",
-            "image_url":"https://www.google.com.eg/search?q=Tea++images&tbm=isch&source=iu&ictx=1&fir=TxKlv48ZskDW9M%253A%252Ci225tAwOJTca4M%252C_&usg=__K1o_Fpo8jlTReebsmFWcj8xlTgg%3D&sa=X&ved=0ahUKEwjrqP7Sk5nbAhUIWSwKHTKRCY4Q9QEIMzAF#imgrc=TxKlv48ZskDW9M:",
+            "image_url":"https://www.istockphoto.com/photo/cup-of-tea-gm171266397-20070581",
             "subtitle":"I like Tea",
             "buttons":[
               {
