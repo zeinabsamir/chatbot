@@ -74,7 +74,7 @@ function sendText(sender, text) {
               "intro_message": "Check-in is available now.",
               "locale": "en_US",        
               "pnr_number": "ABCDEF",
-              "checkin_url": "https:\/\/www.airline.com\/check-in",  
+              "checkin_url": "https://github.com/claudiajs/claudia-bot-builder/blob/master/docs/FB_TEMPLATE_MESSAGE_BUILDER.md",  
               "flight_info": [
                 {
                   "flight_number": "f001",
