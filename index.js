@@ -110,7 +110,7 @@ function sendImage(sender) {
     "attachment":{
       "type":"image", 
       "payload":{
-        "url": "https://www.google.com.eg/search?q=coffee+images&tbm=isch&source=iu&ictx=1&fir=g3JZn3wbqbYOQM%253A%252CnnW5kyNtY39m9M%252C_&usg=__BAI8XAvTctNMysl85pxliH5eslc%3D&sa=X&ved=0ahUKEwig84jLkZnbAhWEh6YKHd6ODW4Q9QEILTAC#imgrc=g3JZn3wbqbYOQM:", 
+        "url": "https://static.parade.com/wp-content/uploads/2015/09/national-coffee-day-2015-ftr.jpg", 
         "is_reusable":true,
       }
     }
