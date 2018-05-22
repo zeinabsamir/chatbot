@@ -70,59 +70,36 @@ function sendText(sender, text) {
           "attachment":{
             "type":"template",
             "payload": {
-            "template_type":"receipt",
-            "recipient_name":"Stephane Crozatier",
-            "order_number":"12345678902",
-            "currency":"USD",
-            "payment_method":"Visa 2345",        
-            "order_url":"http://petersapparel.parseapp.com/order?order_id=123456",
-            "timestamp":"1428444852",         
-            "address":{
-              "street_1":"1 Hacker Way",
-              "street_2":"",
-              "city":"Menlo Park",
-              "postal_code":"94025",
-              "state":"CA",
-              "country":"US"
-            },
-            "summary":{
-              "subtotal":75.00,
-              "shipping_cost":4.95,
-              "total_tax":6.19,
-              "total_cost":56.14
-            },
-            "adjustments":[
-              {
-                "name":"New Customer Discount",
-                "amount":20
-              },
-              {
-                "name":"$10 Off Coupon",
-                "amount":10
-              }
-            ],
-            "elements":[
-              {
-                "title":"Classic White T-Shirt",
-                "subtitle":"100% Soft and Luxurious Cotton",
-                "quantity":2,
-                "price":50,
-                "currency":"USD",
-                "image_url":"http://petersapparel.parseapp.com/img/whiteshirt.png"
-              },
-              {
-                "title":"Classic Gray T-Shirt",
-                "subtitle":"100% Soft and Luxurious Cotton",
-                "quantity":1,
-                "price":25,
-                "currency":"USD",
-                "image_url":"http://petersapparel.parseapp.com/img/grayshirt.png"
-              }
-            ]
-          }
+              "template_type":"generic",
+              "elements":[
+                 {
+                  "title":"Welcome!",
+                  "image_url":"https://petersfancybrownhats.com/company_image.png",
+                  "subtitle":"We have the right hat for everyone.",
+                  "default_action": {
+                    "type": "web_url",
+                    "url": "https://petersfancybrownhats.com/view?item=103",
+                    "messenger_extensions": false,
+                    "webview_height_ratio": "tall",
+                    "fallback_url": "https://petersfancybrownhats.com/"
+                  },
+                  "buttons":[
+                    {
+                      "type":"web_url",
+                      "url":"https://petersfancybrownhats.com",
+                      "title":"View Website"
+                    },{
+                      "type":"postback",
+                      "title":"Start Chatting",
+                      "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                    }              
+                  ]      
+                }
+              ]
+            }
+          }  
         }
-      }
-    }   
+      }       
             
   }, (err, res, body) => {
     if (!err) {
