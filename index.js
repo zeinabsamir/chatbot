@@ -50,39 +50,115 @@ app.post('/webhook', async (req, res) => {
   } catch (err) {
     console.error(err);
   }
-         sendText(sender, "Text echo: " + text)
+        // sendText(sender, "Text echo: " + text)
+        decideMessage(sender, text)
          
+      }
+      if (event.postback) {
+        let text = JSON.stringify(event.postback);
+        decideMessage(sender, text)
+        continue;
       }
   }
   res.sendStatus(200);
 })
+function decideMessage(sender, text1) {
+  let text = text1.toLowerCase();
+  if (text.includes('coffee')) {
+      sendImage(sender);
+  } else if (text.includes('tea')) {
+        genericMassge(sender);
+  } else {
+       sendText(sender, "hello there")
+       sendButtonMessage(sender, "what do you like to drink?")
+  }
 
+}
 
 function sendText(sender, text) {
   let messageData = {text: text}
+  sendRequest(sender, messageData) 
+
+}
+function sendButtonMessage(sender, text) {
+  let messageData = { 
+    "attachment":{
+    "type":"template",
+    "payload":{
+      "template_type":"button",
+      "text": text,
+      "buttons":[
+        {
+          "type":"postback",
+          "title":"Coffee",
+          "payload":"Coffee"
+        },
+        {
+          "type":"postback",
+          "title":"Tea",
+          "payload":"Tea"
+        },
+        {
+          "type":"postback",
+          "title":"Juice",
+          "payload":"Juice"
+        }
+      ]
+    }
+  }
+ }
+ sendRequest(sender, messageData)
+}
+
+function sendImage(sender) {
+  let messageData = {
+    "attachment":{
+      "type":"image", 
+      "payload":{
+        "url": "https://www.google.com.eg/search?q=coffee+images&tbm=isch&source=iu&ictx=1&fir=g3JZn3wbqbYOQM%253A%252CnnW5kyNtY39m9M%252C_&usg=__BAI8XAvTctNMysl85pxliH5eslc%3D&sa=X&ved=0ahUKEwig84jLkZnbAhWEh6YKHd6ODW4Q9QEILTAC#imgrc=g3JZn3wbqbYOQM:", 
+        "is_reusable":true,
+      }
+    }
+
+  }
+  sendRequest(sender, messageData)
+}
+function genericMassge() {
+  let messageData = {
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[
+           {
+            "title":"Tea",
+            "image_url":"https://www.google.com.eg/search?q=Tea++images&tbm=isch&source=iu&ictx=1&fir=TxKlv48ZskDW9M%253A%252Ci225tAwOJTca4M%252C_&usg=__K1o_Fpo8jlTReebsmFWcj8xlTgg%3D&sa=X&ved=0ahUKEwjrqP7Sk5nbAhUIWSwKHTKRCY4Q9QEIMzAF#imgrc=TxKlv48ZskDW9M:",
+            "subtitle":"I like Tea",
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":"https://en.wikipedia.org/wiki/Tea",
+                "title":"Read More"
+              }             
+            ]      
+          }
+        ]
+      }
+    
+
+  }
+ } 
+ sendRequest(sender, messageData);
+}
+function sendRequest(sender, messageData) {
+
   request({
     "uri": "https://graph.facebook.com/v2.6/me/messages",
     "qs": { "access_token": access },
     "method": "POST",
     "json": {  
         "recipient": {"id": sender},
-         "message": {
-          "attachment":{
-            "type":"template",
-            "payload":{
-              "template_type":"button",
-              "text":"Need further assistance? Talk to a representative",
-              "buttons":[
-                {
-                  "type":"phone_number",
-                  "title":"Call Representative",
-                  "payload":"+201064271205"
-                }
-              ]
-            }
-          }
-        
-        }            
+         "message": messageData           
       }      
   }, (err, res, body) => {
     if (!err) {
@@ -91,7 +167,6 @@ function sendText(sender, text) {
        console.error("Unable to send message:" + err);
     }
   });
-
 }
 app.get('/messages', async (req, res) => {
     try {
