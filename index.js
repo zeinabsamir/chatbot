@@ -32,6 +32,114 @@ app.get('/webhook/', function(req, res) {
       
 })
 
+app.get('/setup',function(req,res){
+
+  setupGetStartedButton(res);
+  setupPersistentMenu(res);
+  setupGreetingText(res);
+});
+
+function setupGreetingText(res){
+  let messageData = {
+      "greeting":[
+          {
+          "locale":"default",
+          "text":"hello !"
+          }, {
+          "locale":"en_US",
+          "text":"Hi there how can i help you !"
+          }
+      ]};
+  request({
+      url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      form: messageData
+  },
+  function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+          res.send(body);
+  
+      } else { 
+        console.error("Unable to send message:" + err);
+      }
+  });
+  
+}
+function setupPersistentMenu(res){
+  let messageData = {
+        "persistent_menu":[
+          {
+          "locale":"default",
+          "composer_input_disabled":true,
+          "call_to_actions":[
+              {
+              "title":"Info",
+              "type":"nested",
+              "call_to_actions":[
+                  {
+                  "title":"Help",
+                  "type":"postback",
+                  "payload":"HELP_PAYLOAD"
+                  },
+                  {
+                  "title":"Contact Me",
+                  "type":"postback",
+                  "payload":"CONTACT_INFO_PAYLOAD"
+                  }
+              ]
+             },
+            {
+            "type":"web_url",
+            "title":"Visit website ",
+            "url":"http://www.techiediaries.com",
+            "webview_height_ratio":"full"
+            }
+        ]
+        },
+        {
+        "locale":"zh_CN",
+        "composer_input_disabled":false
+        }
+    ]};  
+    request({
+      url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      form: messageData
+  },
+  function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+          res.send(body);
+  
+      } else { 
+        console.error("Unable to send message:" + err);
+      }
+  });
+
+}
+
+function setupGetStartedButton(res){
+  var messageData = {
+          "get_started":{
+              "payload":"getstarted"
+          }
+  };
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    form: messageData
+},
+function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+        res.send(body);
+
+    } else { 
+      console.error("Unable to send message:" + err);
+    }
+  });
+}
 app.post('/webhook', async (req, res) => {  
   
   let messaging_events = req.body.entry[0].messaging
@@ -43,17 +151,17 @@ app.post('/webhook', async (req, res) => {
           const ms = 'INSERT INTO messages(content, sender_id) VALUES($1, $2) RETURNING *';
           const values = [text, sender];
           try {
-    const client = await pool.connect()
-    const res = await client.query(ms, values);
-    console.log(res.rows[0])
-    client.release();
-  } catch (err) {
-    console.error(err);
-  }
+              const client = await pool.connect()
+              const res = await client.query(ms, values);
+              console.log(res.rows[0])
+             client.release();
+          } catch (err) {
+             console.error(err);
+            }
         // sendText(sender, "Text echo: " + text)
         decideMessage(sender, text)
          
-      }
+    }
       if (event.postback) {
         let text = JSON.stringify(event.postback);
         decideMessage(sender, text)
