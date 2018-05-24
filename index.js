@@ -90,7 +90,7 @@ function sendBroadcast(body, res) {
     form: messageData     
   }, (err, response, body) => {
     if (!err) {
-      res.send(body);
+      return res.send(body);
       console.log(body);
     } else {
        console.error("Unable to send message:" + err);
