@@ -136,6 +136,48 @@ function (error, response, body) {
     }
   });
 }
+app.post('/create', (req, res) => {
+ let messageData = { 
+   "messages": [
+  {
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[
+           {
+            "title":"Welcome to Our Marketplace!",
+            "image_url":"https://www.facebook.com/jaspers.png",
+            "subtitle":"Fresh fruits and vegetables. Yum.",
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":"https://www.jaspersmarket.com",
+                "title":"View Website"
+              }              
+            ]      
+          }
+        ]
+      }       
+    }
+  }
+] }
+  request({
+    "uri": "https://graph.facebook.com/v2.11/me/message_creatives",
+    "qs": { "access_token": access },
+    "method": "POST",
+    "json": {  
+         "message": messageData           
+      }      
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent!')
+    } else {
+       console.error("Unable to send message:" + err);
+    }
+  });
+
+});
 app.post('/webhook', async (req, res) => {  
   
   let messaging_events = req.body.entry[0].messaging
