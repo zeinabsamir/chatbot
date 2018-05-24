@@ -66,8 +66,8 @@ function broadcast(res) {
     form: messageData     
   }, (err, response, body) => {
     if (!err) {
-      sendBroadcast(body, res)
-     return res.send(body);
+     return sendBroadcast(body, res)
+      res.send(body);
       console.log(body);
     } else {
        console.error("Unable to send message:" + err);
