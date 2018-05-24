@@ -39,33 +39,6 @@ app.get('/setup',function(req,res){
   //setupGreetingText(res);
 });
 
-function setupGreetingText(res){
-  let messageData = {
-      "greeting":[
-          {
-          "locale":"default",
-          "text":"hello !"
-          }, {
-          "locale":"en_US",
-          "text":"Hi there how can i help you !"
-          }
-      ]};
-  request({
-      url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      form: messageData
-  },
-  function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-          res.send(body);
-  
-      } else { 
-        console.error("Unable to send message:" + error);
-      }
-  });
-  
-}
 function setupPersistentMenu(res){
   request({
     url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
