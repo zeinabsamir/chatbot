@@ -68,7 +68,8 @@ function broadcast(res) {
     if (!err) {
       sendBroadcast(body.message_creative_id)
       res.send(body);
-      console.log(body['message_creative_id']);
+      let obj = JSON.parse(body);
+      console.log(obj.message_creative_id);
     } else {
        console.error("Unable to send message:" + err);
     }
