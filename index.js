@@ -168,7 +168,7 @@ app.post('/webhook', async (req, res) => {
 })
 function decideMessage(sender, text1) {
   let text = text1.toLowerCase();
-if (text.includes('coffee')) {
+   if (text.includes('coffee')) {
       sendImage(sender);
   } else if (text.includes('tea')) {
         genericMassge(sender);
