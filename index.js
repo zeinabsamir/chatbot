@@ -66,7 +66,7 @@ function broadcast(res) {
     form: messageData     
   }, (err, response, body) => {
     if (!err) {
-      sendBroadcast(body); 
+      sendBroadcast(body, res); 
       res.send(body);
       console.log(body);
     } else {
@@ -75,19 +75,16 @@ function broadcast(res) {
   });
 
 }
-function sendBroadcast(body) {
-  let messageData = {
-    "message_creative_id": Number(body),
-  "notification_type": "REGULAR ",
-  "messaging_type": "MESSAGE_TAG",
-  "tag": "NON_PROMOTIONAL_SUBSCRIPTION"
-  }
+function sendBroadcast(body, res) {
+ 
   request({
     "uri": "https://graph.facebook.com/v2.11/me/broadcast_messages",
     "qs": { "access_token": access },
     "method": "POST",
-    headers: {'Content-Type': 'application/json'},
-    form: messageData     
+    "message_creative_id": Number(body),
+    "notification_type": "REGULAR ",
+    "messaging_type": "MESSAGE_TAG",
+    "tag": "NON_PROMOTIONAL_SUBSCRIPTION"   
   }, (err, response, body) => {
     if (!err) {
       res.send(body);
