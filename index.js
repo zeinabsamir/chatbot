@@ -41,9 +41,9 @@ function broadcast(res) {
       }      
   }, (err, res, body) => {
     if (!err) {
+      res.send(body);
       console.log('message sent!')
     } else {
-      console.log(res);
        console.error("Unable to send message:" + err);
     }
   });
