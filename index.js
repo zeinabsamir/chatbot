@@ -31,7 +31,7 @@ app.get('/webhook/', function(req, res) {
     }
       
 })
-app.post('/', (req, res) => {
+function broadcast(res) {
   request({
     "uri": "https://graph.facebook.com/v2.11/me/message_creatives",
     "qs": { "access_token": access },
@@ -48,7 +48,7 @@ app.post('/', (req, res) => {
     }
   });
 
-})
+}
 
 app.get('/setup',function(req,res){
 
@@ -156,7 +156,7 @@ function (error, response, body) {
 }
 
 app.post('/webhook', async (req, res) => {  
-  
+   broadcast(res);
   let messaging_events = req.body.entry[0].messaging
   for(let i = 0; i < messaging_events.length; i++ ) {
       let event = messaging_events[i];
