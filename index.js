@@ -70,7 +70,6 @@ function broadcast(res) {
         "uri": "https://graph.facebook.com/v2.11/me/broadcast_messages",
         "qs": { "access_token": access },
         "method": "POST",
-        headers: {'Content-Type': 'application/json'},
         "message_creative_id": Number(body),
        "notification_type": "REGULAR",
        "messaging_type": "MESSAGE_TAG",
