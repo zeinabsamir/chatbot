@@ -76,7 +76,6 @@ function broadcast(res) {
         "uri": "https://graph.facebook.com/v2.11/me/broadcast_messages",
         "qs": { "access_token": access },
         "method": "POST",
-        headers: {'Content-Type': 'application/json'},
         form: messageData     
       }, (err, response, body) => {
         if (!err) {
