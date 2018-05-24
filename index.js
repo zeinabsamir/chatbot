@@ -50,6 +50,10 @@ function broadcast(res) {
 
 }
 
+app.get('/broadcast',(req, res) => {
+  broadcast(res);
+})
+
 app.get('/setup',function(req,res){
 
   setupGetStartedButton(res);
@@ -156,7 +160,7 @@ function (error, response, body) {
 }
 
 app.post('/webhook', async (req, res) => {  
-   broadcast(res);
+ 
   let messaging_events = req.body.entry[0].messaging
   for(let i = 0; i < messaging_events.length; i++ ) {
       let event = messaging_events[i];
