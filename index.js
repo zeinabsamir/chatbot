@@ -66,7 +66,7 @@ function broadcast(res) {
     form: messageData     
   }, (err, response, body) => {
     if (!err) {
-      sendBroadcast(body.message_creative_id, res)
+      sendBroadcast(body.message_creative_id)
       res.send(body);
       console.log(body.message_creative_id);
     } else {
@@ -75,9 +75,9 @@ function broadcast(res) {
   });
 
 }
-function sendBroadcast(body, res) {
+function sendBroadcast(body) {
   let messageData = {
-    "message_creative_id": Number(body),
+  "message_creative_id": Number(body),
   "notification_type": "REGULAR",
   "messaging_type": "MESSAGE_TAG",
   "tag": "NON_PROMOTIONAL_SUBSCRIPTION"
@@ -90,7 +90,6 @@ function sendBroadcast(body, res) {
     form: messageData     
   }, (err, response, body) => {
     if (!err) {
-     //res.send(body);
       console.log(body);
     } else {
        console.error("Unable to send message:" + err);
