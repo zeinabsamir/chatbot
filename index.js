@@ -53,7 +53,6 @@ function setupGreetingText(res){
   request({
       url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
       form: messageData
   },
   function (error, response, body) {
@@ -105,7 +104,6 @@ function setupPersistentMenu(res){
     request({
       url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
       form: messageData
   },
   function (error, response, body) {
@@ -128,7 +126,6 @@ function setupGetStartedButton(res){
   request({
     url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
     form: messageData
 },
 function (error, response, body) {
