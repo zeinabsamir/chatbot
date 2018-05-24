@@ -61,7 +61,7 @@ function setupGreetingText(res){
           res.send(body);
   
       } else { 
-        console.error("Unable to send message:" + err);
+        console.error("Unable to send message:" + error);
       }
   });
   
@@ -113,7 +113,7 @@ function setupPersistentMenu(res){
           res.send(body);
   
       } else { 
-        console.error("Unable to send message:" + err);
+        console.error("Unable to send message:" + error);
       }
   });
 
@@ -136,7 +136,7 @@ function (error, response, body) {
         res.send(body);
 
     } else { 
-      console.error("Unable to send message:" + err);
+      console.error("Unable to send message:" + error);
     }
   });
 }
