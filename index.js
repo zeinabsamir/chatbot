@@ -120,7 +120,7 @@ function setupPersistentMenu(res){
 }
 
 function setupGetStartedButton(res){
-  var messageData = {
+  let messageData = {
           "get_started":{
               "payload":"getstarted"
           }
@@ -165,14 +165,17 @@ app.post('/webhook', async (req, res) => {
       if (event.postback) {
         let text = JSON.stringify(event.postback);
         decideMessage(sender, text)
-        continue;
+        
       }
   }
   res.sendStatus(200);
 })
 function decideMessage(sender, text1) {
   let text = text1.toLowerCase();
-  if (text.includes('coffee')) {
+  if (text.includes('getstarted')) {
+    setupGreetingText(res);
+  }
+  else if (text.includes('coffee')) {
       sendImage(sender);
   } else if (text.includes('tea')) {
         genericMassge(sender);
