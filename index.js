@@ -32,21 +32,24 @@ app.get('/webhook/', function(req, res) {
       
 })
 function broadcast(res) {
+  let messageData = {text: "hooo"}
   request({
     "uri": "https://graph.facebook.com/v2.11/me/message_creatives",
     "qs": { "access_token": access },
     "method": "POST",
-    "json": {  
-         "message": "heoooo"           
-      }      
-  }, (err, res, body) => {
-    if (!err) {
-      res.send(body);
-      console.log(body);
-    } else {
-       console.error("Unable to send message:" + err);
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    form: messageData
+},
+function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+        res.send(body);
+
+    } else { 
+      console.error("Unable to send message:" + error);
     }
-  });
+});
+
 
 }
 
