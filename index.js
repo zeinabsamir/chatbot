@@ -39,7 +39,7 @@ function broadcast(res) {
     "json": {  
          "message": "heoooo"           
       }      
-  }, (err, res, body) => {
+  }, (err, response, body) => {
     if (!err) {
       res.send(body);
       console.log(body);
