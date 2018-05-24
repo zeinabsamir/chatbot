@@ -36,7 +36,7 @@ function broadcast(res) {
     text:"hallooooo"
     }
 request({
-    url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
+    url: 'https://graph.facebook.com/v2.6/me/message_creatives?access_token='+ access,
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     form: messageData
@@ -75,7 +75,7 @@ function setupGreetingText(res){
           }
       ]};
   request({
-      url: 'https://graph.facebook.com/v2.6/me/message_creatives?access_token='+ access,
+      url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       form: messageData
