@@ -32,13 +32,38 @@ app.get('/webhook/', function(req, res) {
       
 })
 function broadcast(res) {
+  let messageData = {
+    "messages": [
+      {
+        "attachment":{
+          "type":"template",
+          "payload":{
+            "template_type":"generic",
+            "elements":[
+               {
+                "title":"Welcome to Our Marketplace!",
+                "image_url":"https://www.facebook.com/jaspers.png",
+                "subtitle":"Fresh fruits and vegetables. Yum.",
+                "buttons":[
+                  {
+                    "type":"web_url",
+                    "url":"https://www.jaspersmarket.com",
+                    "title":"View Website"
+                  }              
+                ]      
+              }
+            ]
+          }       
+        }
+      }
+    ]
+  }
   request({
     "uri": "https://graph.facebook.com/v2.11/me/message_creatives",
     "qs": { "access_token": access },
     "method": "POST",
-    "json": {  
-         "message": "heoooo"           
-      }      
+    headers: {'Content-Type': 'application/json'},
+    form: messageData     
   }, (err, response, body) => {
     if (!err) {
       res.send(body);
