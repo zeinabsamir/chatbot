@@ -34,9 +34,9 @@ app.get('/webhook/', function(req, res) {
 
 app.get('/setup',function(req,res){
 
-  setupGetStartedButton(res);
+  //setupGetStartedButton(res);
   setupPersistentMenu(res);
-  setupGreetingText(res);
+  //setupGreetingText(res);
 });
 
 function setupGreetingText(res){
@@ -67,75 +67,86 @@ function setupGreetingText(res){
   
 }
 function setupPersistentMenu(res){
-  let messageData = {
-        "persistent_menu":[
-          {
-          "locale":"default",
-         // "composer_input_disabled":false,
-          "call_to_actions":[
-              {
-              "title":"Info",
-              "type":"nested",
-              "call_to_actions":[
-                  {
-                  "title":"Help",
-                  "type":"postback",
-                  "payload":"HELP_PAYLOAD"
-                  },
-                  {
-                  "title":"Contact Me",
-                  "type":"postback",
-                  "payload":"CONTACT_INFO_PAYLOAD"
-                  }
-              ]
-             },
-            {
-            "type":"web_url",
-            "title":"Visit website ",
-            "url":"http://www.techiediaries.com",
-            "webview_height_ratio":"full"
-            }
-        ]
-        }
-    ]};  
-    request({
-      url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      form: messageData
-  },
-  function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-          res.send(body);
-  
-      } else { 
-        console.error("Unable to send message:" + error);
-      }
-  });
-
-}
-
-function setupGetStartedButton(res){
-  let messageData = {
-          "get_started":{
-              "payload":"getstarted"
-          }
-  };
   request({
-    url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
+    url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
+    qs: { access_token: access },
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    form: messageData
-},
-function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-        res.send(body);
-
-    } else { 
-      console.error("Unable to send message:" + error);
+    json:{
+  "get_started":{
+    "payload":"GET_STARTED_PAYLOAD"
+   }
+ }
+}, function(error, response, body) {
+    console.log("Add persistent menu " + response)
+    if (error) {
+        console.log('Error sending messages: ', error)
+    } else if (response.body.error) {
+        console.log('Error: ', response.body.error)
     }
-  });
+})
+ request({
+    url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
+    qs: { access_token: access },
+    method: 'POST',
+    json:{
+"persistent_menu":[
+    {
+      "locale":"default",
+      "composer_input_disabled":false,
+      "call_to_actions":[
+        {
+          "title":"Home",
+          "type":"postback",
+          "payload":"HOME"
+        },
+        {
+          "title":"Nested Menu Example",
+          "type":"nested",
+          "call_to_actions":[
+            {
+              "title":"Who am I",
+              "type":"postback",
+              "payload":"WHO"
+            },
+            {
+              "title":"Joke",
+              "type":"postback",
+              "payload":"joke"
+            },
+            {
+              "title":"Contact Info",
+              "type":"postback",
+              "payload":"CONTACT"
+            }
+          ]
+        },
+        {
+          "type":"web_url",
+          "title":"Latest News",
+          "url":"http://foxnews.com",
+          "webview_height_ratio":"full"
+        }
+      ]
+    },
+    {
+      "locale":"zh_CN",
+      "composer_input_disabled":false
+    }
+    ]
+    }
+
+}, function(error, response, body) {
+    console.log(response)
+    if (error) {
+        console.log('Error sending messages: ', error)
+    } else if (response.body.error) {
+        console.log('Error: ', response.body.error)
+    }
+})
+
 }
+
+
 app.post('/webhook', async (req, res) => {  
   
   let messaging_events = req.body.entry[0].messaging
