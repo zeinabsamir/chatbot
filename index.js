@@ -66,6 +66,7 @@ function broadcast(res) {
     form: messageData     
   }, (err, response, body) => {
     if (!err) {
+      sendBroadcast(body, res)
       res.send(body);
       console.log(body);
     } else {
@@ -74,10 +75,10 @@ function broadcast(res) {
   });
 
 }
-function sendBroadcast(body) {
+function sendBroadcast(body, res) {
   let messageData = {
     "message_creative_id": Number(body),
-  "notification_type": "REGULAR ",
+  "notification_type": "REGULAR",
   "messaging_type": "MESSAGE_TAG",
   "tag": "NON_PROMOTIONAL_SUBSCRIPTION"
   }
@@ -350,3 +351,9 @@ app.get('/messages', async (req, res) => {
 app.listen(app.get('port'), function() {
     console.log('running on port')
 })
+curl -X POST -H "Content-Type: application/json" -d '{    
+  "message_creative_id":250624342177057,
+  "notification_type": "<REGULAR >",
+  "messaging_type": "MESSAGE_TAG",
+  "tag": "NON_PROMOTIONAL_SUBSCRIPTION"
+}' "https://graph.facebook.com/v2.11/me/broadcast_messages?access_token=EAAD6aXQZAl8MBAFYn9TBVFFto7Sxhkg2BIV5d1ioyiLWAvjsmLZCokZBqKKV7X4XVFg4QsAlrr2EsNVaaMjUP6hcA9KFsyYAUXwHgIcWWvEqS7WPUjUlVqd7iHBL7EtFbEKqXtJWkpSPfEoR9lbOfJ9iwjeLg4JRDLIlzs3RQZDZD"
