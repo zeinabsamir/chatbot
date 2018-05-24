@@ -66,7 +66,7 @@ function broadcast(res) {
     form: messageData     
   }, (err, response, body) => {
     if (!err) {
-      sendBroadcast(body, res); 
+      sendBroadcast(body); 
       res.send(body);
       console.log(body);
     } else {
@@ -75,7 +75,7 @@ function broadcast(res) {
   });
 
 }
-function sendBroadcast(body, res) {
+function sendBroadcast(body) {
   let messageData = {
     "message_creative_id": Number(body),
   "notification_type": "REGULAR ",
