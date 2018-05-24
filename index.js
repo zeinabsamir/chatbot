@@ -96,16 +96,6 @@ function setupPersistentMenu(res){
             "webview_height_ratio":"full"
             }
         ]
-        },{
-          "locale":"zh_CN",
-          "composer_input_disabled":false,
-          "call_to_actions":[
-            {
-              "title":"Pay Bill",
-              "type":"postback",
-              "payload":"PAYBILL_PAYLOAD"
-            }
-          ]    
         }
     ]};  
     request({
