@@ -71,6 +71,7 @@ function setupPersistentMenu(res){
         "persistent_menu":[
           {
           "locale":"default",
+          "disableinput" : false, 
           //"composer_input_disabled":false,
           "call_to_actions":[
               {
