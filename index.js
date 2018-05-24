@@ -31,6 +31,24 @@ app.get('/webhook/', function(req, res) {
     }
       
 })
+app.post('/create', (req, res) => {
+  request({
+    "uri": "https://graph.facebook.com/v2.11/me/message_creatives",
+    "qs": { "access_token": access },
+    "method": "POST",
+    "json": {  
+         "message": "heoooo"           
+      }      
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent!')
+    } else {
+      console.log(res);
+       console.error("Unable to send message:" + err);
+    }
+  });
+
+})
 
 app.get('/setup',function(req,res){
 
