@@ -66,9 +66,9 @@ function broadcast(res) {
     form: messageData     
   }, (err, response, body) => {
     if (!err) {
-      sendBroadcast(body.message_creative_id)
       res.send(body);
       let obj = JSON.parse(body);
+      sendBroadcast(obj.message_creative_id)
       console.log(obj.message_creative_id);
     } else {
        console.error("Unable to send message:" + err);
