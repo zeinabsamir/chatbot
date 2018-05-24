@@ -66,23 +66,6 @@ function broadcast(res) {
     form: messageData     
   }, (err, response, body) => {
     if (!err) {
-      request({
-        "uri": "https://graph.facebook.com/v2.11/me/broadcast_messages",
-        "qs": { "access_token": access },
-        "method": "POST",
-        "message_creative_id": Number(body),
-        "notification_type": "REGULAR ",
-        "messaging_type": "MESSAGE_TAG",
-        "tag": "NON_PROMOTIONAL_SUBSCRIPTION"    
-      }, (err, response, body) => {
-        if (!err) {
-          res.send(body);
-          console.log(body);
-        } else {
-           console.error("Unable to send message:" + err);
-        }
-      });
-    
       res.send(body);
       console.log(body);
     } else {
