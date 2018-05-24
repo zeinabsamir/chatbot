@@ -31,7 +31,7 @@ app.get('/webhook/', function(req, res) {
     }
       
 })
-app.post('/create', (req, res) => {
+app.post('/', (req, res) => {
   request({
     "uri": "https://graph.facebook.com/v2.11/me/message_creatives",
     "qs": { "access_token": access },
