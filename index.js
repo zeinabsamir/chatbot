@@ -155,6 +155,10 @@ function setupPersistentMenu(res){
                   "title":"Contact Me",
                   "type":"postback",
                   "payload":"CONTACT_INFO_PAYLOAD"
+                  },
+                  {
+                    "type":"branded_camera",
+                    "title":"<BUTTON TEXT>"
                   }
               ]
              },
@@ -351,3 +355,4 @@ app.get('/messages', async (req, res) => {
 app.listen(app.get('port'), function() {
     console.log('running on port')
 })
+
