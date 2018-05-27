@@ -110,6 +110,7 @@ app.get('/setup',function(req,res){
 
 function setupGreetingText(res){
   var messageData = {
+    "message":{
     "attachment":{
       "type":"image", 
       "payload":{
@@ -125,7 +126,8 @@ function setupGreetingText(res){
           "locale":"en_US",
           "text":"Greeting text for en_US local !"
           }
-      ]};
+      ]}
+    };
   request({
       url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
       method: 'POST',
