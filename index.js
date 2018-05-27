@@ -247,7 +247,7 @@ function decideMessage(sender, text1) {
   } else if (text.includes('tea')) {
         genericMassge(sender);
   } else {
-       sendText(sender, "hello there")
+       sendText(sender, "hello")
        sendButtonMessage(sender, "what do you like to drink?")
   }
 
