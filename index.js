@@ -102,10 +102,10 @@ app.get('/broadcast',(req, res) => {
 })
 
 app.get('/setup',function(req,res){
-
+  setupGreetingText(res);
   setupGetStartedButton(res);
   setupPersistentMenu(res);
-  setupGreetingText(res);
+  
 });
 
 function setupGreetingText(res){
