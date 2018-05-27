@@ -114,7 +114,8 @@ function setupGreetingText(res){
           {
           "locale":"default",
           "text":"Hello {{user_first_name}}!"
-          }, {
+          }, 
+          {
           "locale":"en_US",
           "text":"Hello {{user_first_name}}!"
           }
