@@ -110,6 +110,13 @@ app.get('/setup',function(req,res){
 
 function setupGreetingText(res){
   var messageData = {
+    "attachment":{
+      "type":"image", 
+      "payload":{
+        "url": "https://static.parade.com/wp-content/uploads/2015/09/national-coffee-day-2015-ftr.jpg", 
+        "is_reusable":true,
+       }
+      },
       "greeting":[
           {
           "locale":"default",
