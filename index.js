@@ -256,7 +256,7 @@ function decideMessage(sender, text1) {
 }
 
 function sendQuickReplies(sender) {
-  let happy =  '\xF0\x9F\x98\x81'
+  let happy =  '😅'
   let messageData = {
     "text": "Here is a quick reply"+ happy,
     "quick_replies":[
