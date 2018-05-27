@@ -178,7 +178,7 @@ function setupPersistentMenu(res){
   },
   function (error, response, body) {
       if (!error && response.statusCode == 200) {
-          res.send(body);
+         // res.send(body);
   
       } else { 
         console.error("Unable to send message:" + error);
@@ -201,7 +201,7 @@ function setupGetStartedButton(res){
 },
 function (error, response, body) {
     if (!error && response.statusCode == 200) {
-        res.send(body);
+      //  res.send(body);
 
     } else { 
       console.error("Unable to send message:" + error);
