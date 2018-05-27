@@ -256,7 +256,7 @@ function decideMessage(sender, text1) {
 }
 
 function sendQuickReplies(sender) {
-  let happy = 'U+1F601'
+  let happy =  "👾"
   let messageData = {
     "text": "Here is a quick reply"+ happy,
     "quick_replies":[
