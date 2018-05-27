@@ -129,8 +129,8 @@ function setupGreetingText(res){
   function (error, response, body) {
       if (!error && response.statusCode == 200) {
           // Print out the response body
-          res.send(body);
-  
+          //res.send(body);
+          console.log(body);
       } else { 
           // TODO: Handle errors
           res.send(body);
@@ -179,8 +179,8 @@ function setupPersistentMenu(res){
   },
   function (error, response, body) {
       if (!error && response.statusCode == 200) {
-         res.send(body);
-  
+         //res.send(body);
+         console.log(body);
       } else { 
         console.error("Unable to send message:" + error);
       }
@@ -202,8 +202,8 @@ function setupGetStartedButton(res){
 },
 function (error, response, body) {
     if (!error && response.statusCode == 200) {
-        res.send(body);
-
+        //res.send(body);
+       console.log(body);
     } else { 
       console.error("Unable to send message:" + error);
     }
