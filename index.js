@@ -110,24 +110,15 @@ app.get('/setup',function(req,res){
 
 function setupGreetingText(res){
   var messageData = {
-    "message":{
-    "attachment":{
-      "type":"image", 
-      "payload":{
-        "url": "https://static.parade.com/wp-content/uploads/2015/09/national-coffee-day-2015-ftr.jpg", 
-        "is_reusable":true,
-       }
-      },
       "greeting":[
           {
           "locale":"default",
-          "text":"Greeting text for default local !"
+          "text":"Hello {{user_first_name}}!"
           }, {
           "locale":"en_US",
           "text":"Greeting text for en_US local !"
           }
-      ]}
-    };
+      ]};
   request({
       url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
       method: 'POST',
