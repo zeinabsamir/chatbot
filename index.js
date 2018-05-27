@@ -116,7 +116,7 @@ function setupGreetingText(res){
           "text":"hello {{user_first_name}}!"
           }, {
           "locale":"en_US",
-          "text":"Hi there how can i help you !"
+          "text":"Hi there how can i help you {{user_first_name}} !"
           }
       ]};
   request({
