@@ -116,7 +116,7 @@ function setupGreetingText(res){
           "text":"Hello {{user_first_name}}!"
           }, {
           "locale":"en_US",
-          "text":"Greeting text for en_US local !"
+          "text":"Hello {{user_first_name}}!"
           }
       ]};
   request({
