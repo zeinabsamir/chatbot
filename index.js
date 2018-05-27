@@ -255,7 +255,7 @@ function decideMessage(sender, text1) {
 
 }
 
-function sendQuickReplies() {
+function sendQuickReplies(sender) {
   let messageData = {
     "text": "Here is a quick reply!",
     "quick_replies":[
@@ -263,7 +263,7 @@ function sendQuickReplies() {
         "content_type":"text",
         "title":"Search",
         "payload":"<POSTBACK_PAYLOAD>",
-        "image_url":"http://example.com/img/red.png"
+        "image_url":"https://static.parade.com/wp-content/uploads/2015/09/national-coffee-day-2015-ftr.jpg"
       },
       {
         "content_type":"location"
