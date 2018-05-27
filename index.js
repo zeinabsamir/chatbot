@@ -243,6 +243,8 @@ function decideMessage(sender, text1) {
   let text = text1.toLowerCase();
   if (text.includes('getstarted')) {
     sendQuickReplies(sender);
+  } else if (text.includes('page')) {
+    sendPageURL(sender);
   }
   else if (text.includes('coffee')) {
       sendImage(sender);
@@ -255,6 +257,32 @@ function decideMessage(sender, text1) {
 
 }
 
+function  sendPageURL(sender) {
+  let messageData = {
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"generic",
+        "elements":[
+           {
+            "title":"welcom to our page 😅",
+            "buttons":[
+              {
+                "type":"web_url",
+                "url":"https://www.facebook.com/Zeinab-1773335382727515/",
+                "title":"zeinab"
+              }             
+            ]      
+          }
+        ]
+      }
+    
+
+  }
+ } 
+ sendRequest(sender, messageData);
+
+}
 function sendQuickReplies(sender) {
   let happy =  '😅'
   let messageData = {
