@@ -241,7 +241,10 @@ app.post('/webhook', async (req, res) => {
 })
 function decideMessage(sender, text1) {
   let text = text1.toLowerCase();
-   if (text.includes('coffee')) {
+  if (text.includes('getstarted')) {
+    sendQuickReplies(sender);
+  }
+  else if (text.includes('coffee')) {
       sendImage(sender);
   } else if (text.includes('tea')) {
         genericMassge(sender);
@@ -252,6 +255,23 @@ function decideMessage(sender, text1) {
 
 }
 
+function sendQuickReplies() {
+  let messageData = {
+    "text": "Here is a quick reply!",
+    "quick_replies":[
+      {
+        "content_type":"text",
+        "title":"Search",
+        "payload":"<POSTBACK_PAYLOAD>",
+        "image_url":"http://example.com/img/red.png"
+      },
+      {
+        "content_type":"location"
+      }
+    ]
+  }
+  sendRequest(sender, messageData);
+}
 function sendText(sender, text) {
   let messageData = {text: text}
   sendRequest(sender, messageData) 
