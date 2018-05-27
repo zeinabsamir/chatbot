@@ -267,6 +267,11 @@ function sendQuickReplies(sender) {
         "image_url":"https://static.parade.com/wp-content/uploads/2015/09/national-coffee-day-2015-ftr.jpg"
       },
       {
+        "content_type":"text",
+        "title":"Page",
+        "payload":"Page",
+      },
+      {
         "content_type":"location"
       }
     ]
