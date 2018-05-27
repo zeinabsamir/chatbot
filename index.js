@@ -137,8 +137,7 @@ function setupGreetingText(res){
   });
   
   }
-  
-}
+
 function setupPersistentMenu(res){
   let messageData = {
         "persistent_menu":[
