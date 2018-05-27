@@ -105,7 +105,7 @@ app.get('/setup',function(req,res){
 
   setupGetStartedButton(res);
   setupPersistentMenu(res);
- // setupGreetingText(res);
+  setupGreetingText(res);
 });
 
 function setupGreetingText(res){
@@ -116,7 +116,7 @@ function setupGreetingText(res){
           "text":"hello {{user_first_name}}!"
           }, {
           "locale":"en_US",
-          "text":"Hello!" 
+          "text":"Hello {{user_first_name}}!!" 
           }
       ]};
   request({
