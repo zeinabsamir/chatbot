@@ -109,14 +109,14 @@ app.get('/setup',function(req,res){
 });
 
 function setupGreetingText(res){
-  let messageData = {
+  var messageData = {
       "greeting":[
           {
           "locale":"default",
-          "text":"hello {{user_first_name}}!"
+          "text":"Greeting text for default local !"
           }, {
           "locale":"en_US",
-          "text":"Hello {{user_first_name}}!!" 
+          "text":"Greeting text for en_US local !"
           }
       ]};
   request({
@@ -127,12 +127,16 @@ function setupGreetingText(res){
   },
   function (error, response, body) {
       if (!error && response.statusCode == 200) {
+          // Print out the response body
           res.send(body);
   
       } else { 
-        console.error("Unable to send message:" + error);
+          // TODO: Handle errors
+          res.send(body);
       }
   });
+  
+  }
   
 }
 function setupPersistentMenu(res){
