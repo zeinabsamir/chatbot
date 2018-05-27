@@ -365,7 +365,9 @@ function genericMassge(sender) {
                 "type":"web_url",
                 "url":"https://en.wikipedia.org/wiki/Tea",
                 "title":"Read More"
-              },  
+              }
+              ] 
+              }, 
               {
                 "title":"Welcome!",
                 "image_url":"https://petersfancybrownhats.com/company_image.png",
@@ -382,8 +384,8 @@ function genericMassge(sender) {
                   }              
                 ]      
               }             
-            ]      
-          }
+                 
+          
         ]
       }
     
