@@ -178,7 +178,7 @@ function setupPersistentMenu(res){
   },
   function (error, response, body) {
       if (!error && response.statusCode == 200) {
-         // res.send(body);
+         res.send(body);
   
       } else { 
         console.error("Unable to send message:" + error);
@@ -201,7 +201,7 @@ function setupGetStartedButton(res){
 },
 function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      //  res.send(body);
+        res.send(body);
 
     } else { 
       console.error("Unable to send message:" + error);
@@ -365,6 +365,22 @@ function genericMassge(sender) {
                 "type":"web_url",
                 "url":"https://en.wikipedia.org/wiki/Tea",
                 "title":"Read More"
+              },  
+              {
+                "title":"Welcome!",
+                "image_url":"https://petersfancybrownhats.com/company_image.png",
+                "subtitle":"We have the right hat for everyone.",
+                "buttons":[
+                  {
+                    "type":"web_url",
+                    "url":"https://petersfancybrownhats.com",
+                    "title":"View Website"
+                  },{
+                    "type":"postback",
+                    "title":"Start Chatting",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                  }              
+                ]      
               }             
             ]      
           }
