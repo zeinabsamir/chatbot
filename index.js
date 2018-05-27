@@ -256,8 +256,9 @@ function decideMessage(sender, text1) {
 }
 
 function sendQuickReplies(sender) {
+
   let messageData = {
-    "text": "Here is a quick reply!",
+    "text": "Here is a quick reply \U0001F604!",
     "quick_replies":[
       {
         "content_type":"text",
