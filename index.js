@@ -156,22 +156,22 @@ function setupPersistentMenu(res){
               "type":"nested",
               "call_to_actions":[
                   {
-                  "title":"اشتراك في الاكاديميه ",
+                  "title":"اشتراك في الاكاديميه 📚",
                   "type":"postback",
                   "payload":"HELP_PAYLOAD"
                   },
                   {
-                  "title":"ابحث داخل الموقع",
+                  "title":"ابحث داخل الموقع 🔎",
                   "type":"postback",
                   "payload":"CONTACT_INFO_PAYLOAD"
                   },
                   {
-                    "title":"اضافه بوت",
+                    "title":" اضافه بوت📬",
                     "type":"postback",
                     "payload":"HELP_PAYLOAD"
                     },
                     {
-                    "title":"طلب بناء بوت",
+                    "title":" طلب بناء بوت💡",
                     "type":"postback",
                     "payload":"CONTACT_INFO_PAYLOAD"
                     }
@@ -256,7 +256,12 @@ app.post('/webhook', async (req, res) => {
 })
 function decideMessage(sender, text1) {
   let text = text1.toLowerCase();
-  if (text.includes('getstarted')) {
+  if (text.includes('getstarted') || text.includes('ابدا من جديد')) {
+    sendText(sender, " {{user_first_name}}ازيك يا ");
+    sendText(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي");
+    sendText(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها");
+    sendText(sender, "كيف يمكن ان نساعدك؟");
+    genericMassge(sender);
     sendQuickReplies(sender);
   } else if (text.includes('page')) {
     sendPageURL(sender);
@@ -372,42 +377,98 @@ function genericMassge(sender) {
         "template_type":"generic",
         "elements":[
            {
-            "title":"Tea",
+            "title":"البحث في مقالات بوتس بالعربي",
             "image_url":"http://s3.amazonaws.com/etntmedia/media/images/ext/497199886/red-tea-steeping.jpg",
-            "subtitle":"I like Tea",
+            "subtitle":"اضغط على كلمه ابحث في الموقع..واكتب الكلمه التي ترغب ف البحث عنها..",
             "buttons":[
-              {
-                "type":"web_url",
-                "url":"https://en.wikipedia.org/wiki/Tea",
-                "title":"Read More"
-              }
-              ] 
-              }, 
-              {
-                "title":"Welcome!",
-                "image_url":"https://petersfancybrownhats.com/company_image.png",
-                "subtitle":"We have the right hat for everyone.",
-                "buttons":[
-                  {
-                    "type":"web_url",
-                    "url":"https://petersfancybrownhats.com",
-                    "title":"View Website"
-                  },{
-                    "type":"postback",
-                    "title":"Start Chatting",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD"
-                  }              
-                ]      
-              }             
+                {
+                "type": "postback",
+                "title": "ابحث في الموقع",
+                "payload": "ابحث في الموقع"
+                }
+            ] 
+          }, 
+          {
+            "title":"اضافه البوت الخاص بك في دليل البوتس بدون مقابل",
+            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "subtitle":"من خلال هذه الخدمه يمكن اضافه البوتس بدون مقابل",
+            "buttons":[
+                {
+                  "type": "postback",
+                  "title": "اضافه بوتس",
+                  "payload":"اضافه بوتس"
+                }
+            ]      
+          }, 
+          {
+            "title":"اكاديميه بوتس بالعربي التعليميه",
+            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "subtitle":"تسجيل بريدك للاشتراك في اكاديميه بوتس بالعربي",
+            "buttons":[
+                {
+                  "type": "postback",
+                  "title": "تسجيل",
+                  "payload":"تسجيل"
+                }
+            ]      
+          }, 
+          {
+            "title":"طلب بناء بوت",
+            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "subtitle":"ستجد هنا..كل تفاصيل المواضيع الخاص بالموقع",
+            "buttons":[
+                {
+                  "type": "postback",
+                  "title": "طلب بوت",
+                  "payload":"طلب بوت"
+                }
+            ]      
+          }, 
+          {
+            "title":"الاعلان على بوتس بالعربي",
+            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "subtitle":"..بوتس بالعربيه هي المنصه العربيه الاولى المتخصصه في الشروحات والمقالات الخاصه بتعلم",
+            "buttons":[
+                {
+                  "type": "postback",
+                  "title": "اعلن معنا",
+                  "payload":"اعلن معنا"
+                }
+            ]      
+          }, 
+          {
+            "title":"الكتابه عن البوتس في موقعنا",
+            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "subtitle":"للكتابه عن البوتس عموما او رايك في بوت استخدمته",
+            "buttons":[
+                {
+                  "type": "postback",
+                  "title": "اكتب معنا",
+                  "payload":"اكتب معنا"
+                }
+            ]      
+          }, 
+          {
+            "title":"مجتكع بوتس بالعربي",
+            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "subtitle":"ستجد هنا..كل تفاصيل المواضيع الخاص بالموقع",
+            "buttons":[
+                {
+                  "type": "postback",
+                  "title": "عرض التفاصيل",
+                  "payload":"عرض التفاصيل"
+                }
+            ]      
+          }             
                  
           
         ]
       }
     
 
-  }
- } 
- sendRequest(sender, messageData);
+    }
+  } 
+  sendRequest(sender, messageData);
 }
 function sendRequest(sender, messageData) {
 
@@ -417,8 +478,10 @@ function sendRequest(sender, messageData) {
     "method": "POST",
     "json": {  
         "recipient": {"id": sender},
-         "message": messageData           
-      }      
+         "message": messageData,
+         "sender_action":"typing_on"
+                    
+      }  
   }, (err, res, body) => {
     if (!err) {
       console.log('message sent!')
