@@ -479,7 +479,7 @@ function sendRequest(sender, messageData) {
     "json": {  
         "recipient": {"id": sender},
          "message": messageData,
-         "sender_action":"typing_on"
+        // "sender_action":"typing_on"
                     
       }  
   }, (err, res, body) => {
