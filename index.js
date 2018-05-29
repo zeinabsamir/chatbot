@@ -117,7 +117,7 @@ function setupGreetingText(res){
           }, 
           {
               "locale":"ar_AR",
-              "text":"!البوتس تتحدث العربيه "
+              "text":"!\u0627\u0644\u0628\u0648\u062a\u0633 \u062a\u062a\u062d\u062f\u062b \u0627\u0644\u0639\u0631\u0628\u064a\u0647"
           }
       ]};
   request({
@@ -256,7 +256,7 @@ app.post('/webhook', async (req, res) => {
 })
 function decideMessage(sender, text1) {
   let text = text1.toLowerCase();
-  if (text.includes('getstarted') || text.includes('ابدا من جديد')) {
+  if (text.includes('get started') || text.includes('ابدا من جديد')) {
     sendText(sender, " {{user_first_name}}ازيك يا ");
     sendText(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي");
     sendText(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها");
