@@ -118,6 +118,10 @@ function setupGreetingText(res){
           {
           "locale":"en_US",
           "text":"Hello {{user_first_name}}!"
+          },
+          {
+              "locale":"ar",
+              "text":"مرحبا{{user_first_name}}!"
           }
       ]};
   request({
