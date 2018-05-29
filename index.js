@@ -147,12 +147,12 @@ function setupPersistentMenu(res){
           "composer_input_disabled":false,
           "call_to_actions":[
               {
-              "title":"ابدا من جديد ",
+              "title":"ابدا من جديد ✅",
               "type":"postback",
               "payload":"CONTACT_INFO_PAYLOAD"
               },
               {
-              "title":"خدمات",
+              "title":"خدمات 💎",
               "type":"nested",
               "call_to_actions":[
                   {
@@ -178,7 +178,7 @@ function setupPersistentMenu(res){
               ]
              },
              {
-              "title":"تحدث مع الادمن ",
+              "title":"تحدث مع الادمن 🗣️",
               "type":"postback",
               "payload":"HELP_PAYLOAD"
               }
