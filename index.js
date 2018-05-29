@@ -117,7 +117,7 @@ function setupGreetingText(res){
           }, 
           {
               "locale":"ar_AR",
-              "text":"\u0645\u0631\u062d\u0628\u0627{{user_first_name}}!"
+              "text":"!البوتس تتحدث العربيه "
           }
       ]};
   request({
