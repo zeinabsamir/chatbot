@@ -112,10 +112,6 @@ function setupGreetingText(res){
   var messageData = {
       "greeting":[
           {
-          "locale":"default",
-          "text":" \u0645\u0631\u062d\u0628\u0627{{user_first_name}}!"
-          }, 
-          {
               "locale":"ar_AR",
               "text":"!\u0627\u0644\u0628\u0648\u062a\u0633 \u062a\u062a\u062d\u062f\u062b \u0627\u0644\u0639\u0631\u0628\u064a\u0647"
           }
@@ -255,11 +251,16 @@ app.post('/webhook', async (req, res) => {
   res.sendStatus(200);
 })
 function decideMessage(sender, text1) {
+
   let text = text1.toLowerCase();
   if (text.includes('getstarted') || text.includes('ابدا من جديد')) {
+    senderAction(sender);
     sendText(sender, " {{user_first_name}}ازيك يا ");
+    senderAction(sender);
     sendText(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي");
+    senderAction(sender);
      sendText(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها");
+     senderAction(sender);
      sendText(sender, "كيف يمكن ان نساعدك؟");
      genericMassge(sender);
  
@@ -469,6 +470,24 @@ function genericMassge(sender) {
     }
   } 
   sendRequest(sender, messageData);
+}
+function senderAction(sender) {
+  request({
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "qs": { "access_token": access },
+    "method": "POST",
+    "json": {  
+        "recipient": {"id": sender},
+         "sender_action":"typing_on"
+                    
+      }  
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent!')
+    } else {
+       console.error("Unable to send message:" + err);
+    }
+  });
 }
 function sendRequest(sender, messageData) {
 
