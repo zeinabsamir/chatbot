@@ -258,10 +258,10 @@ function decideMessage(sender, text1) {
   let text = text1.toLowerCase();
   if (text.includes('get started') ) {
     sendText(sender, " {{user_first_name}}ازيك يا ");
-    sendText(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي");
-    sendText(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها");
-    sendText(sender, "كيف يمكن ان نساعدك؟");
-    genericMassge(sender);
+    //sendText(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي");
+   // sendText(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها");
+   // sendText(sender, "كيف يمكن ان نساعدك؟");
+   // genericMassge(sender);
     sendQuickReplies(sender);
   } else if (text.includes('page')) {
     sendPageURL(sender);
