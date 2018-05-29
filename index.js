@@ -147,27 +147,41 @@ function setupPersistentMenu(res){
           "composer_input_disabled":false,
           "call_to_actions":[
               {
-              "title":"Information",
+              "title":"ابدا من جديد ",
+              "type":"postback",
+              "payload":"CONTACT_INFO_PAYLOAD"
+              },
+              {
+              "title":"خدمات",
               "type":"nested",
               "call_to_actions":[
                   {
-                  "title":"Help",
+                  "title":"اشتراك في الاكاديميه ",
                   "type":"postback",
                   "payload":"HELP_PAYLOAD"
                   },
                   {
-                  "title":"Contact Me",
+                  "title":"ابحث داخل الموقع",
                   "type":"postback",
                   "payload":"CONTACT_INFO_PAYLOAD"
-                  }
+                  },
+                  {
+                    "title":"اضافه بوت",
+                    "type":"postback",
+                    "payload":"HELP_PAYLOAD"
+                    },
+                    {
+                    "title":"طلب بناء بوت",
+                    "type":"postback",
+                    "payload":"CONTACT_INFO_PAYLOAD"
+                    }
               ]
              },
-            {
-            "type":"web_url",
-            "title":"Visit website ",
-            "url":"http://www.techiediaries.com",
-            "webview_height_ratio":"full"
-            }
+             {
+              "title":"تحدث مع الادمن ",
+              "type":"postback",
+              "payload":"HELP_PAYLOAD"
+              }
         ]
         }
     ]};  
