@@ -113,11 +113,11 @@ function setupGreetingText(res){
       "greeting":[
           {
           "locale":"default",
-          "text":"مرحبا {{user_first_name}}!"
+          "text":" \u0645\u0631\u062d\u0628\u0627{{user_first_name}}!"
           }, 
           {
               "locale":"ar_AR",
-              "text":"مرحبا{{user_first_name}}!"
+              "text":"\u0645\u0631\u062d\u0628\u0627{{user_first_name}}!"
           }
       ]};
   request({
@@ -129,7 +129,7 @@ function setupGreetingText(res){
   function (error, response, body) {
       if (!error && response.statusCode == 200) {
           // Print out the response body
-          //res.send(body);
+          res.send(body);
           console.log(body);
       } else { 
           // TODO: Handle errors
