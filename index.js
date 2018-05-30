@@ -222,18 +222,17 @@ function decideMessage(sender, text1) {
 
 
   } else if (text.includes('page')) {
-    senderAction(sender);
+   
     sendPageURL(sender);
   }
   else if (text.includes('coffee')) {
-      senderAction(sender);
+     
       sendImage(sender);
   } else if (text.includes('tea')) {
-        senderAction(sender);
+     
         genericMassge(sender);
   } else {
-       senderAction(sender);
-       sendRequest(sender, "مرحبا")
+       sendText(sender, "مرحبا")
        sendButtonMessage(sender, "what do you like to drink?")
   }
 
