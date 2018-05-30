@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
+const fetch = require('node-fetch');
 const app = express();
 const { Pool } = require('pg');
 const pool = new Pool({
@@ -213,12 +214,15 @@ function decideMessage(sender, text1) {
   let text = text1.toLowerCase();
   if (text.includes('getstarted') || text.includes('ابدا من جديد')) {
     senderAction(sender);
-   sendText(sender, `${name}ازيك يا`);
-    sendText(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي");
-     sendText(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها");
-     sendText(sender, "كيف يمكن ان نساعدك؟");
-     genericMassge(sender);
- 
+   // sendText(sender, `${name}ازيك يا`);
+    sendText(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي").then(() => {;
+     return sendText(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها").then(() => {
+       return  sendText(sender, "كيف يمكن ان نساعدك؟").then(() => {
+         return genericMassge(sender);
+       });
+    });
+  });
+  
   } else if (text.includes('page')) {
     sendPageURL(sender);
   }
@@ -446,22 +450,14 @@ function senderAction(sender) {
 }
 function sendRequest(sender, messageData) {
 
-  request({
-    "uri": "https://graph.facebook.com/v2.6/me/messages",
-    "qs": { "access_token": access },
-    "method": "POST",
-    "json": {  
-        "recipient": {"id": sender},
-         "message": messageData,
-        // "sender_action":"typing_on"
+ return  fetch('https://graph.facebook.com/v2.6/me/messages?access_token='+ access,{
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          json: {  
+            "recipient": {"id": sender},
+            "message": messageData,
                     
       }  
-  }, (err, res, body) => {
-    if (!err) {
-      console.log('message sent!')
-    } else {
-       console.error("Unable to send message:" + err);
-    }
   });
 }
 function requestProfile(messageData){
