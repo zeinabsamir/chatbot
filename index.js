@@ -209,11 +209,11 @@ app.post('/webhook', async (req, res) => {
   res.sendStatus(200);
 })
 function decideMessage(sender, text1) {
-  getUserInfo(sender);
+ let name = getUserInfo(sender);
   let text = text1.toLowerCase();
   if (text.includes('getstarted') || text.includes('ابدا من جديد')) {
     senderAction(sender);
-   // sendText(sender, `${name.first_name}ازيك يا`);
+    sendText(sender, `${name}ازيك يا`);
     sendText(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي");
      sendText(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها");
      sendText(sender, "كيف يمكن ان نساعدك؟");
