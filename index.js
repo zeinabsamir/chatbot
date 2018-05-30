@@ -456,7 +456,7 @@ function sendRequest(sender, text) {
 
   let messageData = {text: text}  
 
- return  fetch('https://graph.facebook.com/v2.6/me/messages?access_token='+ access,{
+ return fetch('https://graph.facebook.com/v2.6/me/messages?access_token='+ access,{
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           json: {  
