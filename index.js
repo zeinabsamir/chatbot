@@ -209,7 +209,7 @@ app.post('/webhook', async (req, res) => {
   res.sendStatus(200);
 })
 function decideMessage(sender, text1) {
- //let name = getUserInfo(sender);
+  getUserInfo(sender);
   let text = text1.toLowerCase();
   if (text.includes('getstarted') || text.includes('ابدا من جديد')) {
     senderAction(sender);
