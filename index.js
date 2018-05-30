@@ -215,13 +215,10 @@ function decideMessage(sender, text1) {
   if (text.includes('getstarted') || text.includes('ابدا من جديد')) {
     senderAction(sender);
    // sendText(sender, `${name}ازيك يا`);
-    sendRequest(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي").then(() => {
-      return sendRequest(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها").then(() => {
-       return  sendRequest(sender, "كيف يمكن ان نساعدك؟").then(() => {
-         return genericMassge(sender);
-      });
-   });
-  });
+    sendRequest(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي")
+  //  sendRequest(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها")
+  // sendRequest(sender, "كيف يمكن ان نساعدك؟")
+  // genericMassge(sender);
 
 
   } else if (text.includes('page')) {
@@ -457,15 +454,20 @@ function sendRequest(sender, text) {
 
   let messageData = {text: text}  
 
- return fetch('https://graph.facebook.com/v2.6/me/messages?access_token='+ access,{
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          json: {  
-            "recipient": {"id": sender},
-            "message": messageData,
-                    
-      }  
-  }).catch(err => console.error(err));;
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messenges?access_token='+ access,
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    form: messageData
+},
+function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      // response.send(body);
+       console.log(body);
+    } else { 
+      console.error("Unable to send message:" + error);
+    }
+  });
 }
 function requestProfile(messageData){
   request({
