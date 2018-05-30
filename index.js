@@ -116,22 +116,7 @@ function setupGreetingText(res){
               "text":"!\u0627\u0644\u0628\u0648\u062a\u0633 \u062a\u062a\u062d\u062f\u062b \u0627\u0644\u0639\u0631\u0628\u064a\u0647"
           }
       ]};
-  request({
-      url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      form: messageData
-  },
-  function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-          // Print out the response body
-          res.send(body);
-          console.log(body);
-      } else { 
-          // TODO: Handle errors
-          res.send(body);
-      }
-  });
+      requestProfile(messageData);
   
   }
 
@@ -181,21 +166,7 @@ function setupPersistentMenu(res){
         ]
         }
     ]};  
-    request({
-      url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      form: messageData
-  },
-  function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-         //res.send(body);
-         console.log(body);
-      } else { 
-        console.error("Unable to send message:" + error);
-      }
-  });
-
+  requestProfile(messageData);
 }
 
 function setupGetStartedButton(res){
@@ -204,20 +175,7 @@ function setupGetStartedButton(res){
               "payload":"getstarted"
           }
   };
-  request({
-    url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    form: messageData
-},
-function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-        //res.send(body);
-       console.log(body);
-    } else { 
-      console.error("Unable to send message:" + error);
-    }
-  });
+ requestProfile(messageData);
 }
 
 app.post('/webhook', async (req, res) => {  
@@ -251,16 +209,13 @@ app.post('/webhook', async (req, res) => {
   res.sendStatus(200);
 })
 function decideMessage(sender, text1) {
-
+ let name = getUserInfo(sender);
   let text = text1.toLowerCase();
   if (text.includes('getstarted') || text.includes('ابدا من جديد')) {
     senderAction(sender);
-    sendText(sender, " {{user_first_name}}ازيك يا ");
-    senderAction(sender);
+    sendText(sender, `${name.first_name}ازيك يا`);
     sendText(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي");
-    senderAction(sender);
      sendText(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها");
-     senderAction(sender);
      sendText(sender, "كيف يمكن ان نساعدك؟");
      genericMassge(sender);
  
@@ -508,6 +463,38 @@ function sendRequest(sender, messageData) {
        console.error("Unable to send message:" + err);
     }
   });
+}
+function requestProfile(messageData){
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='+ access,
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    form: messageData
+},
+function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+        //res.send(body);
+       console.log(body);
+    } else { 
+      console.error("Unable to send message:" + error);
+    }
+  });
+}
+function getUserInfo(sender){
+  const options = {  
+    url: 'https://graph.facebook.com/v2.6/'+sender+'?fields=first_name,last_name&access_token='+access,
+    method: 'GET',
+    headers: {
+        'Accept': 'application/json',
+        'Accept-Charset': 'utf-8'
+    }
+};
+
+request(options, function(err, res, body) {  
+    let json = JSON.parse(body);
+    console.log(json);
+});
+
 }
 app.get('/messages', async (req, res) => {
     try {
