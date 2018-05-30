@@ -496,7 +496,6 @@ function getUserInfo(sender){
 
 let name = request(options, function(err, res, body) {  
      json = JSON.parse(body);
-     name = json.first_name;
     console.log(json);
     
 });
