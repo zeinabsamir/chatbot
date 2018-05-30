@@ -481,7 +481,7 @@ function (error, response, body) {
   });
 }
 function getUserInfo(sender){
-  let name = '';
+  var name = '';
   const options = {  
     url: 'https://graph.facebook.com/v2.6/'+sender+'?fields=first_name,last_name&access_token='+access,
     method: 'GET',
