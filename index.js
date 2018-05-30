@@ -210,11 +210,11 @@ app.post('/webhook', async (req, res) => {
   res.sendStatus(200);
 })
 function decideMessage(sender, text1) {
-  let name = getUserInfo(sender);
+ 
   let text = text1.toLowerCase();
   if (text.includes('getstarted') || text.includes('ابدا من جديد')) {
+    getUserInfo(sender);
     senderAction(sender);
-   sendText(sender, `${name}ازيك يا`);
     sendText(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي");
      sendText(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها");
      sendText(sender, "كيف يمكن ان نساعدك؟");
@@ -454,7 +454,6 @@ function sendRequest(sender, messageData) {
     "json": {  
         "recipient": {"id": sender},
          "message": messageData,
-        // "sender_action":"typing_on"
                     
       }  
   }, (err, res, body) => {
@@ -492,11 +491,11 @@ function getUserInfo(sender){
     }
 };
 
-return request(options, function(err, res, body) {  
+ request(options, function(err, res, body) {  
      json = JSON.parse(body);
      name = json.first_name;
     console.log(json);
-    return name;
+    sendText(sender, `${name}ازيك يا`);
     
 });
  
