@@ -449,21 +449,19 @@ function senderAction(sender) {
     }
   });
 }
-function sendRequest(sender,messageData) {
+function sendRequest(sender, messageData) {
   request({
     url: 'https://graph.facebook.com/v2.6/me/messenges?access_token='+ access,
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     form: messageData
-},
-function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      // response.send(body);
-       console.log(body);
-    } else { 
-      console.error("Unable to send message:" + error);
-    }
-  });
+},(err, res, body) => {
+  if (!err) {
+    console.log('message sent!')
+  } else {
+     console.error("Unable to send message:" + err);
+  }
+});
 }
 function requestProfile(messageData){
   request({
