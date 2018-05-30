@@ -497,6 +497,7 @@ request(options, function(err, res, body) {
     
 });
  return json;
+ console.log(json);
 }
 app.get('/messages', async (req, res) => {
     try {
