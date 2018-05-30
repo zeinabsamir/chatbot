@@ -215,7 +215,7 @@ function decideMessage(sender, text1) {
   if (text.includes('getstarted') || text.includes('ابدا من جديد')) {
     senderAction(sender);
    // sendText(sender, `${name}ازيك يا`);
-    sendRequest(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي")
+    sendText(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي")
   //  sendRequest(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها")
   // sendRequest(sender, "كيف يمكن ان نساعدك؟")
   // genericMassge(sender);
@@ -450,10 +450,7 @@ function senderAction(sender) {
     }
   });
 }
-function sendRequest(sender, text) {
-
-  let messageData = {text: text}  
-
+function sendRequest(sender,messageData) {
   request({
     url: 'https://graph.facebook.com/v2.6/me/messenges?access_token='+ access,
     method: 'POST',
