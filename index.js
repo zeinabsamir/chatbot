@@ -215,13 +215,13 @@ function decideMessage(sender, text1) {
   if (text.includes('getstarted') || text.includes('ابدا من جديد')) {
    // senderAction(sender);
    // sendText(sender, `${name}ازيك يا`);
-    sendRequest(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي").then(() => {
-     return sendRequest(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها").then(() => {
-       return  sendRequest(sender, "كيف يمكن ان نساعدك؟").then(() => {
-         return genericMassge(sender);
-       });
-    });
-  });
+    sendRequest(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي") //.then(() => {
+   //  return sendRequest(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها").then(() => {
+     //  return  sendRequest(sender, "كيف يمكن ان نساعدك؟").then(() => {
+       //  return genericMassge(sender);
+    //   });
+  // });
+  //});
 
   } else if (text.includes('page')) {
     senderAction(sender);
