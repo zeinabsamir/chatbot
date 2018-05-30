@@ -464,7 +464,7 @@ function sendRequest(sender, text) {
             "message": messageData,
                     
       }  
-  });
+  }).catch(err => console.error(err));;
 }
 function requestProfile(messageData){
   request({
