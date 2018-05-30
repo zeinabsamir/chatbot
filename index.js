@@ -481,6 +481,7 @@ function (error, response, body) {
   });
 }
 function getUserInfo(sender){
+  let json= {};
   const options = {  
     url: 'https://graph.facebook.com/v2.6/'+sender+'?fields=first_name,last_name&access_token='+access,
     method: 'GET',
@@ -491,10 +492,11 @@ function getUserInfo(sender){
 };
 
 request(options, function(err, res, body) {  
-    let json = JSON.parse(body);
+     json = JSON.parse(body);
     console.log(json);
+    
 });
-
+ return json;
 }
 app.get('/messages', async (req, res) => {
     try {
