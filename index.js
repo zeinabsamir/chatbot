@@ -213,7 +213,7 @@ function decideMessage(sender, text1) {
   let text = text1.toLowerCase();
   if (text.includes('getstarted') || text.includes('ابدا من جديد')) {
     senderAction(sender);
-   sendText(sender, `${name.first_name}ازيك يا`);
+   sendText(sender, `${name}ازيك يا`);
     sendText(sender, "اهلا بيك في بوتس بالعربي اول منصه عربيه متخصصه في الكتابه عن البوتس باللغه العربيه ستجد انواع مختلفه من المحتوى في بوتس بالعربي");
      sendText(sender, "محتوى تعليمي لبناء البوتس على منصات المراسله المختلفه(ماسنجر,تليجرام,سلاك وغيرها");
      sendText(sender, "كيف يمكن ان نساعدك؟");
@@ -481,7 +481,7 @@ function (error, response, body) {
   });
 }
 function getUserInfo(sender){
-  let json= {};
+  let name = '';
   const options = {  
     url: 'https://graph.facebook.com/v2.6/'+sender+'?fields=first_name,last_name&access_token='+access,
     method: 'GET',
@@ -493,11 +493,11 @@ function getUserInfo(sender){
 
 request(options, function(err, res, body) {  
      json = JSON.parse(body);
+     name = json.first_name;
     console.log(json);
     
 });
- return json;
- console.log(json);
+ return name;
 }
 app.get('/messages', async (req, res) => {
     try {
