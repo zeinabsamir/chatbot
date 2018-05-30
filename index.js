@@ -335,7 +335,7 @@ function genericMassge(sender) {
         "elements":[
            {
             "title":"البحث في مقالات بوتس بالعربي",
-            "image_url":"http://s3.amazonaws.com/etntmedia/media/images/ext/497199886/red-tea-steeping.jpg",
+            "image_url":"https://studybreaks.com/wp-content/uploads/2017/08/books.jpg",
             "subtitle":"اضغط على كلمه ابحث في الموقع..واكتب الكلمه التي ترغب ف البحث عنها..",
             "buttons":[
                 {
@@ -347,7 +347,7 @@ function genericMassge(sender) {
           }, 
           {
             "title":"اضافه البوت الخاص بك في دليل البوتس بدون مقابل",
-            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "image_url":"https://images-na.ssl-images-amazon.com/images/I/61vLRsMRBqL._SL1500_.jpg",
             "subtitle":"من خلال هذه الخدمه يمكن اضافه البوتس بدون مقابل",
             "buttons":[
                 {
@@ -359,7 +359,7 @@ function genericMassge(sender) {
           }, 
           {
             "title":"اكاديميه بوتس بالعربي التعليميه",
-            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "image_url":"https://studybreaks.com/wp-content/uploads/2017/08/books.jpg",
             "subtitle":"تسجيل بريدك للاشتراك في اكاديميه بوتس بالعربي",
             "buttons":[
                 {
@@ -371,7 +371,7 @@ function genericMassge(sender) {
           }, 
           {
             "title":"طلب بناء بوت",
-            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "image_url":"https://openclipart.org/image/2400px/svg_to_png/261323/rocket-312767.png",
             "subtitle":"ستجد هنا..كل تفاصيل المواضيع الخاص بالموقع",
             "buttons":[
                 {
@@ -383,7 +383,7 @@ function genericMassge(sender) {
           }, 
           {
             "title":"الاعلان على بوتس بالعربي",
-            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "image_url":"https://thumbs.dreamstime.com/z/cute-laptop-cartoon-waving-hand-illustration-34608019.jpg",
             "subtitle":"..بوتس بالعربيه هي المنصه العربيه الاولى المتخصصه في الشروحات والمقالات الخاصه بتعلم",
             "buttons":[
                 {
@@ -395,7 +395,7 @@ function genericMassge(sender) {
           }, 
           {
             "title":"الكتابه عن البوتس في موقعنا",
-            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "image_url":"https://lmceverywomanblog.files.wordpress.com/2014/12/pencil-and-paper-2.jpg",
             "subtitle":"للكتابه عن البوتس عموما او رايك في بوت استخدمته",
             "buttons":[
                 {
@@ -407,7 +407,7 @@ function genericMassge(sender) {
           }, 
           {
             "title":"مجتكع بوتس بالعربي",
-            "image_url":"https://petersfancybrownhats.com/company_image.png",
+            "image_url":"https://image.freepik.com/free-vector/people-cartoon-characters_23-2147501999.jpg",
             "subtitle":"ستجد هنا..كل تفاصيل المواضيع الخاص بالموقع",
             "buttons":[
                 {
