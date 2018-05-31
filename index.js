@@ -223,11 +223,16 @@ function decideMessage(sender, text1) {
   } else if (text.includes('page')) {
     sendPageURL(sender);
   }
-  else if (text.includes('coffee')) {
-      sendImage(sender);
-  } else if (text.includes('tea')) {
-        genericMassge(sender);
-  } else {
+  else if (text.includes('اشتراك في الاكاديميه')) {
+    sendText(sender,"شكرا لك على رغبتك في الانضمام الى اكاديميه بوتس بالعربي التعليميه  برجاء ترك رقم هاتفكزز وسوف نتواصل معاك في اقرب وقت");
+  } else if (text.includes('ابحث داخل الموقع')) {
+    sendText(sender, "اكتب الكلمه او الجمله التي ترغب في البحث عنها ..");
+  } else if (text.includes('اضافه بوت')) {
+    sendText(sender, "برجاء كتابه اسم البوت الي ترغب في اضافته!");
+  }  else if (text.includes('طلب بناء بوت')) {
+    sendText(sender, "اكتب الاميل الخاص بك لنتواصل معاك وتعرف التفاصيل");
+  } 
+   else {
        sendText(sender, "مرحبا")
        sendButtonMessage(sender, "what do you like to drink?")
   }
