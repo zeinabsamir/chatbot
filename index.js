@@ -233,12 +233,24 @@ function decideMessage(sender, text1) {
     sendText(sender, "اكتب الاميل الخاص بك لنتواصل معاك وتعرف التفاصيل");
   } 
    else {
-       sendText(sender, "مرحبا")
-       sendButtonMessage(sender, "what do you like to drink?")
+       sendText(sender, "هذه هي نتائج البحث..")
+       sendRequestSearch(text);
   }
 
 }
-
+function sendRequestSearch(text) {
+  request({
+    url: `https://www.googleapis.com/customsearch/v1?key=AIzaSyAo6Cqw9J2g1OOQMxPE4PTpLXRbk2Is7n4&cx=013734309708506733424:dvvzxj9fpbg&q=${text}&alt=json`
+},
+function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      // response.send(body);
+       console.log(body);
+    } else { 
+      console.error("Unable to send message:" + error);
+    }
+  });
+}
 function  sendPageURL(sender) {
   let messageData = {
     "attachment":{
