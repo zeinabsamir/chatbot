@@ -234,6 +234,7 @@ function decideMessage(sender, text1) {
   } 
    else {
        sendText(sender, "هذه هي نتائج البحث..")
+       console.log(text);
        sendRequestSearch(text);
   }
 
